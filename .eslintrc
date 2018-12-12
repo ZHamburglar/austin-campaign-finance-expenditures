@@ -1,0 +1,30 @@
+{
+    "extends" : "react-app",
+    "rules": {
+        "array-callback-return": "error",
+        "default-case": "error",
+        "no-console": "warn",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-trailing-spaces": "error",
+        "object-curly-spacing": ["error", "always", { "arraysInObjects": false }],
+        "indent": [ "error", "tab" ],
+        "eol-last": ["error", "always"],
+        "radix": "error",
+        "yoda": ["error", "never", { "exceptRange": true }],
+        "semi-style": ["error", "last"],
+        "space-before-blocks": "error",
+        "arrow-parens": ["error", "always"],
+        "no-var": "error",
+        "object-shorthand": "error",
+        "semi": "error",
+        "no-empty": "error",
+        "no-unreachable": "error",
+        "valid-typeof": "error",
+        "curly": "error",
+        "no-eq-null": "error",
+        "no-multi-spaces": "error",
+        "no-sparse-arrays": "error",
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "sort-imports": "error"
+    }
+}
