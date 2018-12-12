@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/austin-campaign-finance-expenditures/static/js/runtime~main.a9a617c8.js"
   },
   {
-    "revision": "71aee80c9852f0426bbf",
-    "url": "/austin-campaign-finance-expenditures/static/js/main.71aee80c.chunk.js"
+    "revision": "89f5355c562b8a5dc21c",
+    "url": "/austin-campaign-finance-expenditures/static/js/main.89f5355c.chunk.js"
   },
   {
     "revision": "eaf42ba5f9c4a8f27619",
     "url": "/austin-campaign-finance-expenditures/static/js/1.eaf42ba5.chunk.js"
   },
   {
-    "revision": "71aee80c9852f0426bbf",
+    "revision": "89f5355c562b8a5dc21c",
     "url": "/austin-campaign-finance-expenditures/static/css/main.c9a3265e.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/austin-campaign-finance-expenditures/static/css/1.5d4127de.chunk.css"
   },
   {
-    "revision": "4928c6b6d9a3e3d37127bd65721b5433",
+    "revision": "e18b049ce3d6ed55338afcf70cef4624",
     "url": "/austin-campaign-finance-expenditures/index.html"
   }
 ];
