@@ -12,3 +12,13 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App {
+    text-align: center;
+    background-color: #425766;
+    background-image : url('./assets/images/coadowntown.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Roboto";
+}

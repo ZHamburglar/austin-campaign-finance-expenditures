@@ -4,13 +4,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"now-start": "serve -s ./build",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"precommit": "pretty-quick --staged"
+		"precommit": "pretty-quick --staged",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -21,15 +21,20 @@
 		"react-scripts": "2.1.1"
 	},
 	"dependencies": {
+		"@material-ui/core": "^3.6.2",
+		"axios": "^0.18.0",
 		"connected-react-router": "4.5.0",
+		"prop-types": "^15.6.2",
 		"react": "16.6.3",
 		"react-dom": "16.6.3",
+		"react-loading": "^2.0.3",
 		"react-redux": "5.1.1",
 		"react-router": "4.3.1",
 		"react-router-dom": "4.3.1",
 		"redux": "4.0.1",
 		"redux-thunk": "2.3.0",
 		"sanitize.css": "7.0.3",
+		"semantic-ui-react": "^0.84.0",
 		"serve": "10.1.1",
 		"styled-components": "^4.1.2"
 	},
