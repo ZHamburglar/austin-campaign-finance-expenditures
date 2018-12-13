@@ -7,6 +7,7 @@ import axios from 'axios';
 // Local Components
 import Home from '../Home';
 import About from '../About';
+import Council from '../Council';
 import Loading from '../../components/Loading';
 import Navbar from '../../components/Navbar';
 
@@ -18,13 +19,13 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+        console.log('this ', this);
 		this.getData();
 	}
 
 	getData() {
 		axios.get('https://data.austintexas.gov/resource/asyh-u6ja.json?$limit=5000')
 			.then((response) => {
-				console.log(response, this);
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
 				let organizations = [];
@@ -57,7 +58,7 @@ class App extends Component {
 				});
 			})
 			.catch(function (error) {
-				console.log(error);
+				console.error(error);
 			});
 	}
 
@@ -77,6 +78,7 @@ class App extends Component {
 					<Container text style={{ marginTop: '2.5em' }}>
 						<main>
 							<Route exact path='/' component={Home} />
+							<Route exact path='/council' component={Home} />
 							<Route exact path='/about-us' component={About} />
 						</main>
 					</Container>

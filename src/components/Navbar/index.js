@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { push } from 'connected-react-router'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import {
 	Container,
 	Dropdown,
@@ -27,8 +30,9 @@ class Navbar extends Component {
 	}
 
 	handleOrgChange = (e, data) => {
-		console.log("e: ", e.target, data.value);
 		// this.setState({ selectedOrganization: e.target.value });
+		console.log('e', e, data.value, this.props);
+		this.props.changePage();
 	}
 
 	submitSearch = (e) => {
@@ -49,14 +53,14 @@ class Navbar extends Component {
 							Project Name
 						</Menu.Item>
 						<Menu.Item as='a'>Home</Menu.Item>
-						<Dropdown item simple text='Dropdown' onClick={this.handleOrgChange}>
+						<Dropdown item simple text='Dropdown'>
 							<Dropdown.Menu>
 								<Dropdown.Item>
 									<i className='dropdown icon' />
 									<span className='text'>Office Holders</span>
 									<Dropdown.Menu>
 										{this.props.organizations.Council.map((member) => {
-											return <Dropdown.Item key={member.filer_name} data-value={member.filer_name}>{member.filer_name}</Dropdown.Item>
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>
 										})}
 									</Dropdown.Menu>
 								</Dropdown.Item>
@@ -65,7 +69,7 @@ class Navbar extends Component {
 									<span className='text'>Organizations</span>
 									<Dropdown.Menu>
 										{this.props.organizations.Organizations.map((member) => {
-											return <Dropdown.Item key={member.filer_name} data-value={member.filer_name}>{member.filer_name}</Dropdown.Item>
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>
 										})}
 									</Dropdown.Menu>
 								</Dropdown.Item>
@@ -81,4 +85,8 @@ class Navbar extends Component {
 	}
 }
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+	changePage: () => push('/council')
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(Navbar);
