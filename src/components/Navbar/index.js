@@ -53,46 +53,43 @@ class Navbar extends Component {
 	render() {
 		return (
 			<>
-				<Menu fixed="top" compact borderless inverted>
-					<Container>
-						<Menu.Item as='a' header>
-							<Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-							Project Name
-						</Menu.Item>
-						<Menu.Item as='a'>Home</Menu.Item>
-						<Dropdown item simple text='Dropdown'>
-							<Dropdown.Menu>
-								<Dropdown.Item>
-									<i className='dropdown icon' />
-									<span className='text'>Office Holders</span>
-									<Dropdown.Menu>
-										{this.props.organizations.Council.map((member) => {
-											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-										})}
-									</Dropdown.Menu>
-								</Dropdown.Item>
-								<Dropdown.Item>
-									<i className='dropdown icon' />
-									<span className='text'>PACS</span>
-									<Dropdown.Menu>
-										{this.props.organizations.Organizations.map((member) => {
-											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-										})}
-									</Dropdown.Menu>
-								</Dropdown.Item>
-							</Dropdown.Menu>
-						</Dropdown>
-						<DatesRangeInput
-							name="datesRange"
-							placeholder="From - To"
-							dateFormat="MM-DD-YYYY"
-							minDate="01-10-2016"
-							value={this.state.datesRange}
-							iconPosition="left"
-							onChange={this.handleChange} />
-						<Link to='/'>Home</Link>
-						<Link to='/about-us'>About</Link>
-					</Container>
+				<Menu fixed="top" borderless inverted className="Navbar">
+					<Menu.Item as='a' header>
+						Austin Political Tracker
+					</Menu.Item>
+					<Menu.Item as='a'>Home</Menu.Item>
+					<Dropdown item simple text='Dropdown'>
+						<Dropdown.Menu>
+							<Dropdown.Item>
+								<i className='dropdown icon' />
+								<span className='text'>Office Holders</span>
+								<Dropdown.Menu>
+									{this.props.organizations.Council.map((member) => {
+										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+									})}
+								</Dropdown.Menu>
+							</Dropdown.Item>
+							<Dropdown.Item>
+								<i className='dropdown icon' />
+								<span className='text'>PACS</span>
+								<Dropdown.Menu>
+									{this.props.organizations.Organizations.map((member) => {
+										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+									})}
+								</Dropdown.Menu>
+							</Dropdown.Item>
+						</Dropdown.Menu>
+					</Dropdown>
+					<DatesRangeInput
+						name="datesRange"
+						placeholder="From - To"
+						dateFormat="MM-DD-YYYY"
+						minDate="01-10-2016"
+						value={this.state.datesRange}
+						iconPosition="left"
+						onChange={this.handleChange} />
+					<Link to='/'>Home</Link>
+					<Link to='/about-us'>About</Link>
 				</Menu>
 			</>
 		);

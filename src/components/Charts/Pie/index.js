@@ -79,7 +79,7 @@ class PieChart extends Component {
 		};
 
 		return (
-			<div>
+			<div style={{ backgroundColor: 'black' }}>
 				<p>Contribution Amount</p>
 				<Doughnut
 					data={data}

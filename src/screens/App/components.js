@@ -2,7 +2,10 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-    min-height: 100vh;
+	position: absolute;
+	margin-top: 5vh;
+	width: 100%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,8 +15,8 @@ export const MainContainer = styled.div`
 `;
 
 export const Main = styled.div`
-    margin-top: 5%;
     background-color: rgba(66,87,102, .6);
-    height: calc(100vh - 40px);
-    width: calc(100% - 40px);
+	height: 95%;
+    width: 95%;
+	padding: 10px;
 `;

@@ -24,14 +24,13 @@ class Council extends Component {
 		this.filterData(this.props.match.params.org);
 		// this.createZipCodeList(this.props.match.params.org);
 	}
-	// The issue is arising in the createZipCodeList
+
 	componentWillReceiveProps(nextProps) {
 		console.log('props change??', nextProps.selectedOrganization);
 		// this.createZipCodeList(nextProps.selectedOrganization);
 	}
 
 	filterData(targetOrg) {
-		console.log('org', targetOrg, this.props.data);
 		let filteredData = [];
 		filteredData.Contributions = [];
 		filteredData.Expenditures = [];
@@ -96,37 +95,31 @@ class Council extends Component {
 		if (this.state.filteredData) {
 			return (
 				<>
-					<div className="Main">
-						<div className="main-container">
-							<Container>
-								<Grid columns={3}>
-									<Grid.Row>
-										<Grid.Column>
-											Hello
-										</Grid.Column>
-										<Grid.Column>
-											Hello
-										</Grid.Column>
-										<Grid.Column>
-											<PieChart data={this.state.filteredData} />
-										</Grid.Column>
-									</Grid.Row>
-									<Grid.Row>
-										<Grid.Column>
-											HEllo
-										</Grid.Column>
-										<Grid.Column>
-											Hello
-										</Grid.Column>
-										<Grid.Column>
-											Hello
-										</Grid.Column>
-									</Grid.Row>
-								</Grid>
-							</Container>
-							{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
-						</div>
-					</div>
+					<Grid columns={3}>
+						<Grid.Row>
+							<Grid.Column>
+								<PieChart data={this.state.filteredData} />
+							</Grid.Column>
+							<Grid.Column>
+								<PieChart data={this.state.filteredData} />
+							</Grid.Column>
+							<Grid.Column>
+								<PieChart data={this.state.filteredData} />
+							</Grid.Column>
+						</Grid.Row>
+						<Grid.Row>
+							<Grid.Column>
+								HEllo
+							</Grid.Column>
+							<Grid.Column>
+								Hello
+							</Grid.Column>
+							<Grid.Column>
+								Hello
+							</Grid.Column>
+						</Grid.Row>
+					</Grid>
+					{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
 				</>
 			);
 		}

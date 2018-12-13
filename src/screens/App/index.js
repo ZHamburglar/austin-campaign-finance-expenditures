@@ -76,19 +76,14 @@ class App extends Component {
 		if (this.state.data) {
 			return (
 				<>
-					<Container>
 						<Navbar organizations={this.state.organizations} />
-						<Container>
-							<MainContainer>
-								<Main>
-									<Route exact path='/' component={Home} />
-									<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
-									<Route exact path='/about-us' component={About} />
-								</Main>
-							</MainContainer>
-						</Container>
-
-					</Container>
+						<MainContainer>
+							<Main>
+								<Route exact path='/' component={Home} />
+								<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
+								<Route exact path='/about-us' component={About} />
+							</Main>
+						</MainContainer>
 				</>
 			);
 		}
