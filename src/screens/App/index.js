@@ -1,7 +1,7 @@
 // Node Modules
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import { Container } from 'semantic-ui-react'
+import { Route } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
 // Local Components
@@ -19,7 +19,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-        console.log('this ', this);
 		this.getData();
 	}
 
@@ -28,6 +27,7 @@ class App extends Component {
 			.then((response) => {
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
+				console.log(response.data)
 				let organizations = [];
 				organizations.Council = [];
 				organizations.Organizations = [];
@@ -51,6 +51,7 @@ class App extends Component {
 					}
 					return null;
 				});
+				console.log('Orgs', orgs)
 				this.setState({
 					loading: false,
 					data: response.data,
@@ -78,7 +79,7 @@ class App extends Component {
 					<Container text style={{ marginTop: '2.5em' }}>
 						<main>
 							<Route exact path='/' component={Home} />
-							<Route exact path='/council' component={Home} />
+							<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
 							<Route exact path='/about-us' component={About} />
 						</main>
 					</Container>
@@ -90,7 +91,7 @@ class App extends Component {
 			<div>
 				This is Broken
 			</div>
-		)
+		);
 	}
 }
 

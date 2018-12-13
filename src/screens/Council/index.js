@@ -11,19 +11,20 @@ class Council extends Component {
 		loading: true,
 		zipCodes: null
 	}
+
 	static propTypes = {
-		data: PropTypes.array.isRequired,
-		filteredData: PropTypes.array,
-		selectedOrganization: PropTypes.string.isRequired
+		data: PropTypes.array.isRequired
 	};
 
 	componentDidMount() {
-		this.createZipCodeList(this.props.selectedOrganization);
+		// console.log("council", this.props.match.params.org, this)
+		console.log("council", this);
+		this.createZipCodeList(this.props.match.params.org);
 	}
 	// The issue is arising in the createZipCodeList
 	componentWillReceiveProps(nextProps) {
 		console.log('props change??', nextProps.selectedOrganization);
-		this.createZipCodeList(nextProps.selectedOrganization);
+		// this.createZipCodeList(nextProps.selectedOrganization);
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -34,12 +35,12 @@ class Council extends Component {
 				// Use Regex to remove the 4 digits after "-"
 				let newZip;
 				if (transaction.transactor_zip_code === undefined) {
-					newZip = 'Not Categorized'
+					newZip = 'Not Categorized';
 				} else {
-					newZip = transaction.transactor_zip_code.slice(0,5)
+					newZip = transaction.transactor_zip_code.slice(0, 5);
 				}
-				if (zipCodes.some(x => x.zipCode === newZip)) {
-					let index = zipCodes.findIndex(y => y.zipCode === newZip)
+				if (zipCodes.some((x) => x.zipCode === newZip)) {
+					let index = zipCodes.findIndex((y) => y.zipCode === newZip);
 					zipCodes[index].count += 1;
 					zipCodes[index].amount = zipCodes[index].amount + parseInt(transaction.transaction_amount, 10);
 				} else {
@@ -47,16 +48,16 @@ class Council extends Component {
 					newObj.zipCode = newZip;
 					newObj.count = 1;
 					newObj.amount = parseInt(transaction.transaction_amount, 10);
-					zipCodes.push(newObj)
+					zipCodes.push(newObj);
 				}
 			}
 			return null;
-		})
-		console.log("zip codes", zipCodes)
+		});
+		console.log("zip codes", zipCodes);
 		this.setState({
 			loading: false,
 			zipCodes
-		})
+		});
 	}
 
 	render() {
@@ -67,18 +68,19 @@ class Council extends Component {
 				>
 					<Loading />
 				</div>
-			)
+			);
 		}
 
-	return (
+		return (
 			<>
-			<div className="Main">
+				<div className="Main">
 					<div className="main-container">Council
-						<TopZipcodes zipCodes={this.state.zipCodes} />
+						This is the council page
+						{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
 					</div>
 				</div>
 			</>
-		)
+		);
 
 	}
 }
