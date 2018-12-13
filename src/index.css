@@ -21,4 +21,6 @@ code {
     background-size: cover;
     background-repeat: no-repeat;
     font-family: "Roboto";
+    height: 100%;
+    width: 100%;
 }

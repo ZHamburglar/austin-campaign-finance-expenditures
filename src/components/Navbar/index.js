@@ -53,7 +53,7 @@ class Navbar extends Component {
 	render() {
 		return (
 			<>
-				<Menu fixed='top' inverted>
+				<Menu fixed="top" compact borderless inverted>
 					<Container>
 						<Menu.Item as='a' header>
 							<Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />

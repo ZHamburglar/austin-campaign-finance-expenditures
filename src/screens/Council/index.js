@@ -1,14 +1,17 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Grid } from 'semantic-ui-react';
 
 // Local Components
 import Loading from '../../components/Loading';
+import PieChart from '../../components/Charts/Pie';
 import TopZipcodes from '../../components/TopZipcodes';
 
 class Council extends Component {
 	state = {
 		loading: true,
+		filteredData: null,
 		zipCodes: null
 	}
 
@@ -17,14 +20,33 @@ class Council extends Component {
 	};
 
 	componentDidMount() {
-		// console.log("council", this.props.match.params.org, this)
 		console.log("council", this);
-		this.createZipCodeList(this.props.match.params.org);
+		this.filterData(this.props.match.params.org);
+		// this.createZipCodeList(this.props.match.params.org);
 	}
 	// The issue is arising in the createZipCodeList
 	componentWillReceiveProps(nextProps) {
 		console.log('props change??', nextProps.selectedOrganization);
 		// this.createZipCodeList(nextProps.selectedOrganization);
+	}
+
+	filterData(targetOrg) {
+		console.log('org', targetOrg, this.props.data);
+		let filteredData = [];
+		filteredData.Contributions = [];
+		filteredData.Expenditures = [];
+		this.props.data.filter((transaction) => {
+			if (transaction.filer_name === targetOrg && transaction.transaction_type === "Contribution") {
+				filteredData.Contributions.push(transaction);
+			} else if (transaction.filer_name === targetOrg && transaction.transaction_type === "Expenditure") {
+				filteredData.Expenditures.push(transaction);
+			}
+			return null;
+		});
+		this.setState({
+			loading: false,
+			filteredData
+		});
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -71,16 +93,51 @@ class Council extends Component {
 			);
 		}
 
+		if (this.state.filteredData) {
+			return (
+				<>
+					<div className="Main">
+						<div className="main-container">
+							<Container>
+								<Grid columns={3}>
+									<Grid.Row>
+										<Grid.Column>
+											Hello
+										</Grid.Column>
+										<Grid.Column>
+											Hello
+										</Grid.Column>
+										<Grid.Column>
+											<PieChart data={this.state.filteredData} />
+										</Grid.Column>
+									</Grid.Row>
+									<Grid.Row>
+										<Grid.Column>
+											HEllo
+										</Grid.Column>
+										<Grid.Column>
+											Hello
+										</Grid.Column>
+										<Grid.Column>
+											Hello
+										</Grid.Column>
+									</Grid.Row>
+								</Grid>
+							</Container>
+							{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
+						</div>
+					</div>
+				</>
+			);
+		}
+
 		return (
 			<>
-				<div className="Main">
-					<div className="main-container">Council
-						This is the council page
-						{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
-					</div>
-				</div>
+				Something has gone wrong.
 			</>
-		);
+		)
+
+
 
 	}
 }

@@ -10,6 +10,7 @@ import About from '../About';
 import Council from '../Council';
 import Loading from '../../components/Loading';
 import Navbar from '../../components/Navbar';
+import { MainContainer, Main } from './components';
 
 class App extends Component {
 	state = {
@@ -27,7 +28,7 @@ class App extends Component {
 			.then((response) => {
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
-				console.log(response.data)
+				// console.log(response.data)
 				let organizations = [];
 				organizations.Council = [];
 				organizations.Organizations = [];
@@ -75,13 +76,18 @@ class App extends Component {
 		if (this.state.data) {
 			return (
 				<>
-					<Navbar organizations={this.state.organizations} />
-					<Container text style={{ marginTop: '2.5em' }}>
-						<main>
-							<Route exact path='/' component={Home} />
-							<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
-							<Route exact path='/about-us' component={About} />
-						</main>
+					<Container>
+						<Navbar organizations={this.state.organizations} />
+						<Container>
+							<MainContainer>
+								<Main>
+									<Route exact path='/' component={Home} />
+									<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
+									<Route exact path='/about-us' component={About} />
+								</Main>
+							</MainContainer>
+						</Container>
+
 					</Container>
 				</>
 			);
