@@ -1,7 +1,6 @@
 // Node Modules
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
 // Local Components
@@ -52,7 +51,6 @@ class App extends Component {
 					}
 					return null;
 				});
-				console.log('Orgs', orgs)
 				this.setState({
 					loading: false,
 					data: response.data,

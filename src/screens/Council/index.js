@@ -1,13 +1,12 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 // Local Components
 import Loading from '../../components/Loading';
 import PieChart from '../../components/Charts/Pie';
 import HorizontalBar from '../../components/Charts/Bar';
-import TopZipcodes from '../../components/TopZipcodes';
 
 class Council extends Component {
 	state = {

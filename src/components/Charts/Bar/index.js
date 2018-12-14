@@ -9,6 +9,7 @@ import districtList from '../../../assets/JSON/DistrictZips.json';
 class BarChart extends Component {
 	state = {
 		loading: true,
+		noData: null,
 		filteredData: null
 	}
 
@@ -17,7 +18,14 @@ class BarChart extends Component {
 	};
 
 	componentDidMount() {
-		this.filterPie(this.props.data);
+		(this.props.data.Contributions.length) ? this.filterPie(this.props.data) : this.noDataPie(this.props.data);
+	}
+
+	noDataPie() {
+		this.setState({
+			loading: false,
+			noData: "There isn't any data"
+		});
 	}
 
 	filterPie() {
@@ -29,8 +37,14 @@ class BarChart extends Component {
 					// ** FOR FUTURE USE **
 					// This splits it into City, State, and Zip
 					const splitZip = transaction.transactor_city.split(", ");
-					newZip = splitZip[2].slice(0, 5);
-					// console.log('it is so', splitZip[2]);
+					// console.log('split?: ', splitZip, transaction.transactor_city.length)
+					if (splitZip.length === 3) {
+						newZip = splitZip[2].slice(0, 5);
+					} else if (splitZip.length === 2) {
+						newZip = splitZip[1].slice(0, 5);
+					} else {
+						newZip = 'Not Categorized';
+					}
 				} else {
 					newZip = 'Not Categorized';
 				}
@@ -49,7 +63,6 @@ class BarChart extends Component {
 				} else {
 					district = transaction.office_held;
 				}
-				console.log('Zips: ', transaction.office_sought, transaction.office_held);
 				const newObj = Object.assign({});
 				newObj.zipCode = newZip;
 				newObj.count = 1;
@@ -71,7 +84,7 @@ class BarChart extends Component {
 	}
 
 	render() {
-		const { filteredData } = this.state;
+		const { filteredData, noData } = this.state;
 		let colors = [];
 
 		if (filteredData) {
@@ -82,7 +95,6 @@ class BarChart extends Component {
 			} else {
 				x = 9;
 			}
-			console.log('filtered?: ', filteredData);
 			for (i = 0; i < x; i++ ) {
 				if (districtList[filteredData[i].district].includes(parseInt(filteredData[i].zipCode, 10) )) {
 					colors.push('green');
@@ -119,13 +131,19 @@ class BarChart extends Component {
 			);
 		}
 
+		if (noData) {
+			return (
+				<div>
+					There is no data
+				</div>
+			);
+		}
+
 		return (
 			<div>
 				Loading
 			</div>
 		);
-
-
 	}
 }
 
