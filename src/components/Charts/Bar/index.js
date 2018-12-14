@@ -85,26 +85,33 @@ class BarChart extends Component {
 
 	render() {
 		const { filteredData, noData } = this.state;
-		let colors = [];
+		const colors = [];
+		const labels = [];
+		const amounts = [];
 
 		if (filteredData) {
 			let i;
 			let x;
-			if (filteredData.length < 9) {
+			if (filteredData.length < 8) {
 				x = filteredData.length;
 			} else {
-				x = 9;
+				x = 8;
 			}
 			for (i = 0; i < x; i++ ) {
-				if (districtList[filteredData[i].district].includes(parseInt(filteredData[i].zipCode, 10) )) {
+				if (typeof districtList[filteredData[i].district] == "undefined") {
+					labels.push(filteredData[i].zipCode);
+					amounts.push(filteredData[i].amount);
+					colors.push('red');
+				} else if (districtList[filteredData[i].district].includes(parseInt(filteredData[i].zipCode, 10))) {
+					labels.push(filteredData[i].zipCode);
+					amounts.push(filteredData[i].amount);
 					colors.push('green');
 				} else {
+					labels.push(filteredData[i].zipCode);
+					amounts.push(filteredData[i].amount);
 					colors.push('red');
 				}
 			}
-
-			const labels = [ filteredData[0].zipCode, filteredData[1].zipCode, filteredData[2].zipCode, filteredData[3].zipCode, filteredData[4].zipCode, filteredData[5].zipCode, filteredData[6].zipCode, filteredData[7].zipCode];
-			const amounts = [ filteredData[0].amount, filteredData[1].amount, filteredData[2].amount, filteredData[3].amount, filteredData[4].amount, filteredData[5].amount, filteredData[6].amount, filteredData[7].amount];
 			const data = {
 				labels,
 				datasets: [{

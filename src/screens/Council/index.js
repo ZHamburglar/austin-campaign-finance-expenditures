@@ -20,7 +20,6 @@ class Council extends Component {
 	};
 
 	componentDidMount() {
-		console.log("council", this);
 		this.filterData(this.props.match.params.org);
 		// this.createZipCodeList(this.props.match.params.org);
 	}
@@ -74,7 +73,6 @@ class Council extends Component {
 			}
 			return null;
 		});
-		console.log("zip codes", zipCodes);
 		this.setState({
 			loading: false,
 			zipCodes
