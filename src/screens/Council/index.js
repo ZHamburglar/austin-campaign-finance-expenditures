@@ -6,6 +6,7 @@ import { Container, Grid } from 'semantic-ui-react';
 // Local Components
 import Loading from '../../components/Loading';
 import PieChart from '../../components/Charts/Pie';
+import HorizontalBar from '../../components/Charts/Bar';
 import TopZipcodes from '../../components/TopZipcodes';
 
 class Council extends Component {
@@ -109,17 +110,16 @@ class Council extends Component {
 						</Grid.Row>
 						<Grid.Row>
 							<Grid.Column>
-								HEllo
+								<HorizontalBar data={this.state.filteredData} />
 							</Grid.Column>
 							<Grid.Column>
-								Hello
+								<HorizontalBar data={this.state.filteredData} />
 							</Grid.Column>
 							<Grid.Column>
-								Hello
+								<HorizontalBar data={this.state.filteredData} />
 							</Grid.Column>
 						</Grid.Row>
 					</Grid>
-					{/* <TopZipcodes zipCodes={this.state.zipCodes} /> */}
 				</>
 			);
 		}
@@ -128,10 +128,7 @@ class Council extends Component {
 			<>
 				Something has gone wrong.
 			</>
-		)
-
-
-
+		);
 	}
 }
 

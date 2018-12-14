@@ -1,12 +1,17 @@
 // Node Modules
 import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
+import { Doughnut } from 'react-chartjs-2';
+import { Grid } from 'semantic-ui-react';
+
 
 class PieChart extends Component {
 	state = {
+		loading: true,
 		filteredData: null,
-		loading: true
+		total: null,
+		mean: null,
+		median: null
 	}
 
 	static propTypes = {
@@ -18,34 +23,38 @@ class PieChart extends Component {
 	}
 
 	filterPie() {
-		console.log("Pie: ", this.props.data.Contributions);
 		let filteredData = [ 0, 0, 0, 0, 0];
-		// transaction_amount
+		let total = 0;
 		this.props.data.Contributions.filter((transaction) => {
 			if (transaction.transaction_amount > 0 && transaction.transaction_amount <= 100) {
+				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[0]++;
 			} else if (transaction.transaction_amount > 100 && transaction.transaction_amount <= 200) {
+				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[1]++;
 			} else if (transaction.transaction_amount > 200 && transaction.transaction_amount < 349) {
+				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[2]++;
-
 			} else if (transaction.transaction_amount > 349 && transaction.transaction_amount <= 350) {
+				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[3]++;
-
 			} else if (transaction.transaction_amount > 350) {
+				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[4]++;
 			}
 			return null;
 		});
-		console.log('filtered data', filteredData)
+		let mean = parseFloat(total/this.props.data.Contributions.length).toFixed(2);
 		this.setState({
 			loading: false,
-			filteredData
+			filteredData,
+			total,
+			mean
 		});
 	}
 
 	render() {
-		const { filteredData } = this.state;
+		const { filteredData, total, mean } = this.state;
 		const data = {
 			labels: [
 				'$0-$100',
@@ -80,11 +89,25 @@ class PieChart extends Component {
 
 		return (
 			<div style={{ backgroundColor: 'black' }}>
-				<p>Contribution Amount</p>
+				<Grid>
+					<Grid.Row columns={1}>
+						<Grid.Column>
+							<p>Contribution Amount</p>
+						</Grid.Column>
+					</Grid.Row>
+					<Grid.Row columns={2}>
+						<Grid.Column>
+							<p>Total: ${total}</p>
+						</Grid.Column>
+						<Grid.Column>
+							<p>Mean: ${mean}</p>
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
 				<Doughnut
 					data={data}
-					width={200}
-					height={200}
+					width={100}
+					height={100}
 					options={chartOptions}
 				/>
 			</div>

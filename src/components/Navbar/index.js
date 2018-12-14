@@ -6,9 +6,7 @@ import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-	Container,
 	Dropdown,
-	Image,
 	Menu,
 } from 'semantic-ui-react';
 import { DatesRangeInput } from 'semantic-ui-calendar-react';
@@ -80,16 +78,21 @@ class Navbar extends Component {
 							</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>
-					<DatesRangeInput
-						name="datesRange"
-						placeholder="From - To"
-						dateFormat="MM-DD-YYYY"
-						minDate="01-10-2016"
-						value={this.state.datesRange}
-						iconPosition="left"
-						onChange={this.handleChange} />
+					<Menu.Item>
+						<DatesRangeInput
+							name="datesRange"
+							placeholder="From - To"
+							dateFormat="MM-DD-YYYY"
+							minDate="01-10-2016"
+							value={this.state.datesRange}
+							iconPosition="left"
+							onChange={this.handleChange} />
+					</Menu.Item>
 					<Link to='/'>Home</Link>
 					<Link to='/about-us'>About</Link>
+					<Menu.Item position="right">
+						Settings
+					</Menu.Item>
 				</Menu>
 			</>
 		);
