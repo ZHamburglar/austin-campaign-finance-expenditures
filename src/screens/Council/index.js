@@ -94,7 +94,7 @@ class Council extends Component {
 		if (this.state.filteredData) {
 			return (
 				<>
-					<Grid columns={3}>
+					<Grid columns={3} stackable>
 						<Grid.Row>
 							<Grid.Column>
 								<GeneralInfo data={this.state.filteredData} />
