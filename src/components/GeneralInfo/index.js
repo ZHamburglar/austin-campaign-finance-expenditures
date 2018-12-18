@@ -6,7 +6,9 @@ import moment from 'moment';
 class GeneralInfo extends Component {
 	state = {
 		loading: true,
-		dataRange: null
+		name: null,
+		dataRange: null,
+		reports: null
 	}
 
 	static propTypes = {
@@ -18,27 +20,25 @@ class GeneralInfo extends Component {
 	}
 
 	filterData() {
-		const dates = [];
 		const dataRange = [];
+		let reports = new Set();
 		this.props.data.Contributions.filter((transaction) => {
-			dates.push(moment(transaction.transaction_date).format("MM-DD-YYYY"));
+			reports.add(transaction.report_type + " '"+ moment(transaction.transaction_date).format("YY"));
 			return null;
 		});
-		dates.sort((a, b) => {
-			if(a < b) { return -1; }
-			if(a > b) { return 1; }
-			return 0;
-		});
-		dataRange.push(dates[0]);
-		dataRange.push(dates[dates.length - 1]);
+		let moments = this.props.data.Contributions.map((date) => moment(date.transaction_date)),
+			first = moment.min(moments).format("MM-DD-YYYY"),
+			last = moment.max(moments).format("MM-DD-YYYY");
+		dataRange.push(first, last);
 		this.setState({
 			loading: false,
-			dataRange
+			dataRange,
+			reports: Array.from(reports)
 		});
 	}
 
 	render() {
-		const { loading, dataRange } = this.state;
+		const { loading, name, dataRange, reports } = this.state;
 		if (loading) {
 			return (
 				<div>
@@ -50,8 +50,12 @@ class GeneralInfo extends Component {
 		if (!loading) {
 			return (
 				<div>
-					<div>Name:</div>
+					<div>Name: {name}</div>
 					<div>Date Range: {dataRange[0]} - {dataRange[1]}</div>
+					<div>Reports: {reports.map((report, i) => (
+						<div key={i}>{report}</div>
+					))}
+					</div>
 				</div>
 			);
 		}
