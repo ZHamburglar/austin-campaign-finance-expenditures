@@ -5,6 +5,7 @@ import { Grid } from 'semantic-ui-react';
 
 // Local Components
 import Loading from '../../components/Loading';
+import GeneralInfo from '../../components/GeneralInfo';
 import PieChart from '../../components/Charts/Pie';
 import HorizontalBar from '../../components/Charts/Bar';
 
@@ -96,7 +97,7 @@ class Council extends Component {
 					<Grid columns={3}>
 						<Grid.Row>
 							<Grid.Column>
-								<PieChart data={this.state.filteredData} />
+								<GeneralInfo data={this.state.filteredData} />
 							</Grid.Column>
 							<Grid.Column>
 								<PieChart data={this.state.filteredData} />
