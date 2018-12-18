@@ -1,7 +1,6 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -30,7 +29,7 @@ class Navbar extends Component {
 	}
 
 	handleOrgChange = (e, data) => {
-		this.props.changePage(data.value);
+		this.props.changeOrgPage(data.value);
 	}
 
 	handleChange = (e, { name, value }) => {
@@ -55,8 +54,10 @@ class Navbar extends Component {
 					<Menu.Item as='a' header>
 						Austin Political Tracker
 					</Menu.Item>
-					<Menu.Item as='a'>Home</Menu.Item>
-					<Dropdown item simple text='Dropdown'>
+					<Menu.Item as='a' onClick={this.props.changeHomePage}>
+						Home
+					</Menu.Item>
+					<Dropdown item simple text='Council/PACS'>
 						<Dropdown.Menu>
 							<Dropdown.Item>
 								<i className='dropdown icon' />
@@ -88,9 +89,7 @@ class Navbar extends Component {
 							iconPosition="left"
 							onChange={this.handleChange} />
 					</Menu.Item>
-					<Link to='/'>Home</Link>
-					<Link to='/about-us'>About</Link>
-					<Menu.Item position="right">
+					<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
 						Settings
 					</Menu.Item>
 				</Menu>
@@ -101,9 +100,11 @@ class Navbar extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-	changePage: (org) => push('/council/' + org, {
+	changeHomePage: () => push('/'),
+	changeSettingPage: () => push('/about-us'),
+	changeOrgPage: (org) => push('/council/' + org, {
 		hello: "state value"
-	})
+	}),
 }, dispatch);
 
 export default connect(null, mapDispatchToProps)(Navbar);
