@@ -83,7 +83,13 @@ class PieChart extends Component {
 		};
 
 		const chartOptions = {
-			legend: { display: true },
+			legend: {
+				display: true,
+				position: 'bottom',
+				labels: {
+					fontColor: 'red',
+				}
+			},
 			tooltips: { enabled: true }
 		};
 

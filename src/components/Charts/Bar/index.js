@@ -60,8 +60,10 @@ class BarChart extends Component {
 				let district;
 				if (transaction.office_sought) {
 					district = transaction.office_sought;
-				} else {
+				} else if (transaction.office_held) {
 					district = transaction.office_held;
+				} else {
+					district = 'Austin';
 				}
 				const newObj = Object.assign({});
 				newObj.zipCode = newZip;

@@ -20,3 +20,4 @@ Dropdown Select: https://material-ui.com/demos/selects/
 * Search for Users
 * Expenditures
 * Zip Code Searching
+* Color Coding for Legends where appropriate
