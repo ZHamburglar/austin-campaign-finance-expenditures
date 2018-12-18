@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/austin-campaign-finance-expenditures/precache-manifest.96327150091b5254d2a4f1605956bf3a.js"
+  "/austin-campaign-finance-expenditures/precache-manifest.9c9edc1797faacfebdca1ecbccf660a6.js"
 );
 
 workbox.clientsClaim();
