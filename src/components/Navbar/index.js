@@ -101,7 +101,7 @@ class Navbar extends Component {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
 	changeHomePage: () => push('/'),
-	changeSettingPage: () => push('/about-us'),
+	changeSettingPage: () => push('/settings'),
 	changeOrgPage: (org) => push('/council/' + org, {
 		hello: "state value"
 	}),

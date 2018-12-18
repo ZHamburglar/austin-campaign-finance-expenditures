@@ -14,3 +14,9 @@ Then commit to the repo.
 
 Linear Progress: https://material-ui.com/demos/progress/
 Dropdown Select: https://material-ui.com/demos/selects/
+
+## Todo's
+* Decide CSS and Layout
+* Search for Users
+* Expenditures
+* Zip Code Searching

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // Local Components
 import Home from '../Home';
-import About from '../About';
+import Settings from '../Settings';
 import Council from '../Council';
 import Loading from '../../components/Loading';
 import Navbar from '../../components/Navbar';
@@ -79,7 +79,7 @@ class App extends Component {
 							<Main>
 								<Route exact path='/' component={Home} />
 								<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
-								<Route exact path='/about-us' component={About} />
+								<Route exact path='/settings' component={Settings} />
 							</Main>
 						</MainContainer>
 				</>
