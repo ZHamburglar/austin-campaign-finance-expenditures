@@ -1,6 +1,7 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 class GeneralInfo extends Component {
 	state = {
@@ -17,19 +18,40 @@ class GeneralInfo extends Component {
 	}
 
 	filterData() {
-		console.log('hello nurse', this.props.data, this.props.data.Contributions.length);
+		const dates = [];
 		const dataRange = [];
-
+		this.props.data.Contributions.filter((transaction) => {
+			dates.push(moment(transaction.transaction_date).format("MM-DD-YYYY"));
+			return null;
+		});
+		dates.sort((a, b) => {
+			if(a < b) { return -1; }
+			if(a > b) { return 1; }
+			return 0;
+		});
+		dataRange.push(dates[0]);
+		dataRange.push(dates[dates.length - 1]);
 		this.setState({
-			loading: false
+			loading: false,
+			dataRange
 		});
 	}
 
 	render() {
-		if (this.state.loading) {
+		const { loading, dataRange } = this.state;
+		if (loading) {
 			return (
 				<div>
 					Loading
+				</div>
+			);
+		}
+
+		if (!loading) {
+			return (
+				<div>
+					<div>Name:</div>
+					<div>Date Range: {dataRange[0]} - {dataRange[1]}</div>
 				</div>
 			);
 		}
