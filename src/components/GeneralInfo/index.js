@@ -38,7 +38,6 @@ class GeneralInfo extends Component {
 		dataRange.push(first, last);
 		const reportsArr = Array.from(reportsSet);
 		const pages = Math.ceil(reportsArr.length/3);
-		console.log(reportsArr.length, pages);
 		this.setState({
 			loading: false,
 			dataRange,
@@ -73,7 +72,6 @@ class GeneralInfo extends Component {
 				);
 			}
 		}
-
 		return <Segment.Group>{ reportsList }</Segment.Group>;
 	}
 
@@ -92,12 +90,18 @@ class GeneralInfo extends Component {
 			return (
 				<div style={{color:'black'}}>
 					<div>Name: {name}</div>
-					<div>Date Range: {dataRange[0]} - {dataRange[1]}</div>
-					<div>Reports: {reports.map((report, i) => (
-						<div key={i}>{report}</div>
-					))}
-					</div>
-					<Segment.Group>
+					<Segment.Group raised>
+						<Segment>
+							<p>Date Range:</p>
+						</Segment>
+						<Segment.Group horizontal>
+							<Segment>First: {dataRange[0]}</Segment>
+							<Segment>Last: {dataRange[1]}</Segment>
+						</Segment.Group>
+
+					</Segment.Group>
+
+					<Segment.Group raised>
 						<Segment>
 							<p>Reports Included:</p>
 						</Segment>

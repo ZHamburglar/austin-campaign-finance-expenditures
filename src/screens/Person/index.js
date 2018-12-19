@@ -1,5 +1,5 @@
+// Node Modules
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 
 class Person extends Component {
@@ -8,7 +8,7 @@ class Person extends Component {
 			<div>
 				This is the person page.
 			</div>
-		)
+		);
 	}
 }
 
