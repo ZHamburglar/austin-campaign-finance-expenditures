@@ -1,7 +1,11 @@
 // Node Modules
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
+
+// Local Components
+import { changeModal } from '../../redux/reducers/modal';
 
 class UpdateModal extends Component {
 	state = { open: false }
@@ -21,7 +25,6 @@ class UpdateModal extends Component {
 				<Modal dimmer='blurring' open={this.state.open} onClose={this.close}>
 					<Modal.Header>Update Notes</Modal.Header>
 					<Modal.Content image>
-						<Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
 						<Modal.Description>
 							<Header>Default Profile Image</Header>
 							<p>We've found the following gravatar image associated with your e-mail address.</p>
@@ -47,4 +50,12 @@ const mapStateToProps = ({ modal }) => ({
 	open: modal.open
 });
 
-export default connect(mapStateToProps, null)(UpdateModal);
+const mapDispatchToProps = (dispatch) =>
+	bindActionCreators(
+		{
+			changeModal,
+		},
+		dispatch
+	);
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateModal);
