@@ -21,3 +21,4 @@ Dropdown Select: https://material-ui.com/demos/selects/
 * Expenditures
 * Zip Code Searching
 * Color Coding for Legends where appropriate
+* On popup pulls up the latest release notes.
