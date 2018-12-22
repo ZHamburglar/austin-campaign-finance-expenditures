@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 // Local Components
+import withTracker from '../../withTracker';
 import Home from '../Home';
 import Settings from '../Settings';
 import Council from '../Council';
@@ -77,9 +78,9 @@ class App extends Component {
 						<Navbar organizations={this.state.organizations} />
 						<MainContainer>
 							<Main>
-								<Route exact path='/' component={Home} />
-								<Route exact path='/council/:org' component={(props) => <Council {...props} data={this.state.data} />} />
-								<Route exact path='/settings' component={Settings} />
+								<Route exact path='/' component={withTracker(Home)} />
+								<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
+								<Route exact path='/settings' component={withTracker(Settings)} />
 							</Main>
 						</MainContainer>
 				</>
