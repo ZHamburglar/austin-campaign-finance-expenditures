@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Button, Header, Modal } from 'semantic-ui-react';
 
 // Local Components
 import { changeModal } from '../../redux/reducers/modal';
 
 class UpdateModal extends Component {
 	state = {
-		open: false,
+		open: true,
 		notes: null
 	}
 
@@ -53,18 +53,46 @@ class UpdateModal extends Component {
 	}
 
 	render () {
+		if (this.state.notes) {
+			return (
+				<>
+					{/* <Button onClick={this.show}>Blurring</Button> */}
+					<Modal dimmer='blurring' open={this.state.open} onClose={this.close}>
+						<Modal.Header>Update Notes</Modal.Header>
+						<Modal.Content>
+							<Modal.Description>
+								{this.state.notes.map((update, i) => {
+									return <div key={i}>
+										<Header>Version {update.version}</Header>
+										{update.notes.map((notes, i) => {
+											return <div key={update.version + i}>
+												<p>&#8226; {notes}</p>
+											</div>;
+										})}
+									</div>;
+								})}
+							</Modal.Description>
+						</Modal.Content>
+						<Modal.Actions>
+							<Button
+								positive
+								icon='checkmark'
+								labelPosition='right'
+								content="Good to know"
+								onClick={this.close}
+							/>
+						</Modal.Actions>
+					</Modal>
+				</>
+			);
+		}
+
 		return (
 			<>
-				<Button onClick={this.show}>Blurring</Button>
+				{/* <Button onClick={this.show}>Blurring</Button> */}
 				<Modal dimmer='blurring' open={this.state.open} onClose={this.close}>
 					<Modal.Header>Update Notes</Modal.Header>
-					<Modal.Content image>
-						<Modal.Description>
-							<Header>Default Profile Image</Header>
-							<p>We've found the following gravatar image associated with your e-mail address.</p>
-							<p>Is it okay to use this photo?</p>
-						</Modal.Description>
-					</Modal.Content>
+						Update Notes
 					<Modal.Actions>
 						<Button
 							positive
