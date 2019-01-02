@@ -2,13 +2,47 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 
 // Local Components
 import { changeModal } from '../../redux/reducers/modal';
 
 class UpdateModal extends Component {
-	state = { open: false }
+	state = {
+		open: false,
+		notes: null
+	}
+
+	componentDidMount() {
+		this.getData();
+	}
+
+	getData = () => {
+		axios.get("https://raw.githubusercontent.com/ZHamburglar/austin-campaign-finance-expenditures/master/RELEASENOTES.md")
+			.then((response) => {
+				const updates = response.data.replace(/(\r\n|\n|\r)/g, '').split('### ');
+				let i;
+				let j;
+				let notes = [];
+				for ( i = 1; i < updates.length; i++ ) {
+					let update = updates[i].split('* ');
+					const newObj = Object.assign({});
+					newObj.version = update[0];
+					let list = [];
+					for ( j = 1; j < update.length; j++ ) {
+						list.push(update[j]);
+					}
+					newObj.notes = list;
+					notes.push(newObj);
+				}
+				this.setState({
+					notes
+				});
+			}).catch((error) => {
+				console.error(error);
+			});
+	}
 
 	show = () => {
 		this.setState({ open: true });
