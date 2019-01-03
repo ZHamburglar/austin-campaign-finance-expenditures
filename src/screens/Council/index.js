@@ -1,7 +1,6 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from 'semantic-ui-react';
 
 // Local Components
 import Loading from '../../components/Loading';
@@ -23,12 +22,10 @@ class Council extends Component {
 
 	componentDidMount() {
 		this.filterData(this.props.match.params.org);
-		// this.createZipCodeList(this.props.match.params.org);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		console.log('props change??', nextProps.selectedOrganization);
-		// this.createZipCodeList(nextProps.selectedOrganization);
 	}
 
 	filterData(targetOrg) {
@@ -96,30 +93,28 @@ class Council extends Component {
 		if (this.state.filteredData) {
 			return (
 				<>
-					<Grid columns={3} stackable>
-						<Grid.Row>
-							<Grid.Column>
-								<GeneralInfo data={this.state.filteredData} />
-							</Grid.Column>
-							<Grid.Column>
-								<PieChart data={this.state.filteredData} />
-							</Grid.Column>
-							<Grid.Column>
-								<PieChart data={this.state.filteredData} />
-							</Grid.Column>
-						</Grid.Row>
-						<Grid.Row>
-							<Grid.Column>
-								<TopList data={this.state.filteredData} entity="Individual" />
-							</Grid.Column>
-							<Grid.Column>
-								<TopList data={this.state.filteredData} entity="Organizations" />
-							</Grid.Column>
-							<Grid.Column>
-								<HorizontalBar data={this.state.filteredData} />
-							</Grid.Column>
-						</Grid.Row>
-					</Grid>
+					<div className="row">
+						<div className="one-third column">
+							<GeneralInfo data={this.state.filteredData} />
+						</div>
+						<div className="one-third column">
+							<PieChart data={this.state.filteredData} />
+						</div>
+						<div className="one-third column">
+							<PieChart data={this.state.filteredData} />
+						</div>
+					</div>
+					<div className="row">
+						<div className="one-third column">
+							<TopList data={this.state.filteredData} entity="Individuals" />
+						</div>
+						<div className="one-third column">
+							<TopList data={this.state.filteredData} entity="Organizations" />
+						</div>
+						<div className="one-third column">
+							<HorizontalBar data={this.state.filteredData} />
+						</div>
+					</div>
 				</>
 			);
 		}

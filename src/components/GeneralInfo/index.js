@@ -12,7 +12,8 @@ class GeneralInfo extends Component {
 		dataRange: null,
 		reports: null,
 		pages: null,
-		activePage: null
+		activePage: null,
+		pageSize: 3,
 	}
 
 	static propTypes = {
@@ -48,21 +49,39 @@ class GeneralInfo extends Component {
 	}
 
 	createReportsList () {
+		const { pageSize } = this.state;
 		let x;
 		let reportsList = [];
-		let i = ((this.state.activePage * 3) -3);
+		let i = ((this.state.activePage * pageSize) - pageSize);
 		if (this.state.activePage === this.state.pages) {
 			x = this.state.reports.length;
 		} else {
-			x = (this.state.activePage * 3);
+			x = (this.state.activePage * pageSize);
 		}
-
+		console.log('x', x, 'i', i)
 		if (this.state.reports.length === 0) {
 			reportsList.push(
 				<Segment key={0}>
 					<p>None</p>
 				</Segment>
 			);
+		} else if (this.state.activePage === this.state.pages) {
+			let j = x - i;
+			console.log('j', j)
+			for (i; i < x; i++) {
+				reportsList.push(
+					<Segment key={i}>
+						<p>{this.state.reports[i]}</p>
+					</Segment>
+				);
+			}
+			for (j; j < pageSize; j++) {
+				reportsList.push(
+					<Segment key={j}>
+						<p> </p>
+					</Segment>
+				);
+			}
 		} else {
 			for (i; i < x; i++) {
 				reportsList.push(

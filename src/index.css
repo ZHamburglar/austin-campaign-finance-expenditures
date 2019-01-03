@@ -35,3 +35,60 @@ code {
     align-items: center;
     justify-content: center;
 }
+
+
+.row {
+	height: 50%;
+	overflow: hidden;
+}
+
+.row::before,
+.row::after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+.one,
+.one-third,
+.two-thirds,
+.one-fourth,
+.half {
+  width: 100%;
+}
+/* 
+* Any styling that should be applied to screen widths larger
+* than a mobile device: tablet, laptop, desktop, etc. 
+*/
+
+@media only screen and (min-width: 800px) {
+  .one {
+    width: 100%;
+  }
+  .half {
+    width: calc(100% / 2);
+  }
+  .one-third {
+    width: calc(100% / 3);
+  }
+  .one-fourth {
+    width: calc(100% / 4);
+  }
+  .two-thirds {
+    width: calc(100% / 3 * 2);
+  }
+  .column {
+    float: left;
+  }
+}
+/* Styling */
+
+.column {
+  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h1 {
+  text-align: center;
+}

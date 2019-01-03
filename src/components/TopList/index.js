@@ -13,7 +13,8 @@ class TopList extends Component {
 		name: null,
 		pages: null,
 		activePage: null,
-		topContributors: null
+		topContributors: null,
+		pageSize: 5
 	}
 
 	static propTypes = {
@@ -28,10 +29,11 @@ class TopList extends Component {
 	handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
 
 	filterData() {
+		const { pageSize } = this.state;
 		const { entity } = this.props;
 		const contributors = [];
 		this.props.data.Contributions.filter((transaction) => {
-			if (transaction.entity === 'Individual' && entity === 'Individual') {
+			if (transaction.entity === 'Individual' && entity === 'Individuals') {
 				contributors.push(transaction);
 				return true;
 			} else if (transaction.entity === 'Entity' && entity === 'Organizations') {
@@ -45,34 +47,54 @@ class TopList extends Component {
 			return b.transaction_amount - a.transaction_amount;
 		});
 		let topContributors = top.slice(0, 20);
-
+		let totalPages = Math.ceil(topContributors.length/ pageSize);
 		this.setState({
 			loading: false,
-			pages: 4,
 			activePage: 1,
+			pages: totalPages,
 			topContributors
 		});
 	}
 
 	createContributionList () {
+		const { pageSize } = this.state;
 		let x;
 		let contributionsList = [];
-		let i = ((this.state.activePage * 5) -5);
+		let i = ((this.state.activePage * pageSize) - pageSize);
 		if (this.state.activePage === this.state.pages) {
 			x = this.state.topContributors.length;
 		} else {
-			x = (this.state.activePage * 5);
+			x = (this.state.activePage * pageSize);
 		}
 
 		if (this.state.topContributors.length === 0) {
 			contributionsList.push(
 				<Table.Row key={0}>
-					<Table.Cell>John</Table.Cell>
+					<Table.Cell></Table.Cell>
 					<Table.Cell textAlign='right'>None</Table.Cell>
 				</Table.Row>
 			);
+		} else if (this.state.activePage === this.state.pages) {
+			let j = x - i;
+			for (i; i < x; i++) {
+				contributionsList.push(
+					<Table.Row key={i}>
+						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
+						<Table.Cell textAlign='right'>${this.state.topContributors[i].transaction_amount}</Table.Cell>
+					</Table.Row>
+				);
+			}
+			for (j; j < pageSize; j++) {
+				contributionsList.push(
+					<Table.Row key={j}>
+						<Table.Cell></Table.Cell>
+						<Table.Cell textAlign='right'>None</Table.Cell>
+					</Table.Row>
+				);
+			}
 		} else {
 			for (i; i < x; i++) {
+				console.log('top cont', this.state.topContributors, i, x, this.state.pages);
 				contributionsList.push(
 					<Table.Row key={i}>
 						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
@@ -105,10 +127,10 @@ class TopList extends Component {
 						</Segment>
 						<Segment.Group>
 							<TableStyle>
-								<Table stackable selectable>
+								<Table stackable selectable fixed singleLine>
 									<Table.Header>
 										<Table.Row>
-											<Table.HeaderCell>Contributor</Table.HeaderCell>
+											<Table.HeaderCell className="twelve wide">Contributor</Table.HeaderCell>
 											<Table.HeaderCell textAlign='right'>Amount</Table.HeaderCell>
 										</Table.Row>
 									</Table.Header>
