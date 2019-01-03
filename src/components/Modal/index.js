@@ -22,9 +22,9 @@ class UpdateModal extends Component {
 		axios.get("https://raw.githubusercontent.com/ZHamburglar/austin-campaign-finance-expenditures/master/RELEASENOTES.md")
 			.then((response) => {
 				const updates = response.data.replace(/(\r\n|\n|\r)/g, '').split('### ');
-				let i;
-				let j;
-				let notes = [];
+				let i,
+					j,
+					notes = [];
 				for ( i = 1; i < updates.length; i++ ) {
 					let update = updates[i].split('* ');
 					const newObj = Object.assign({});
@@ -39,6 +39,7 @@ class UpdateModal extends Component {
 				this.setState({
 					notes
 				});
+				console.log('response', response.data, updates);
 			}).catch((error) => {
 				console.error(error);
 			});
@@ -60,18 +61,18 @@ class UpdateModal extends Component {
 					<Modal dimmer='blurring' open={this.state.open} onClose={this.close}>
 						<Modal.Header>Update Notes</Modal.Header>
 						<Modal.Content>
-							<Modal.Description>
-								{this.state.notes.map((update, i) => {
-									return <div key={i}>
+							{this.state.notes.map((update, i) => {
+								return <div key={i}>
+									<Modal.Description>
 										<Header>Version {update.version}</Header>
 										{update.notes.map((notes, i) => {
 											return <div key={update.version + i}>
 												<p>&#8226; {notes}</p>
 											</div>;
 										})}
-									</div>;
-								})}
-							</Modal.Description>
+									</Modal.Description>
+								</div>;
+							})}
 						</Modal.Content>
 						<Modal.Actions>
 							<Button

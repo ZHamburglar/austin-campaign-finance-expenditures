@@ -15,7 +15,7 @@ export const MainContainer = styled.div`
 `;
 
 export const Main = styled.div`
-    background-color: rgba(66,87,102, .6);
+    background-color: rgba(66,87,102, .8);
 	height: 95%;
     width: 95%;
 	padding: 10px;

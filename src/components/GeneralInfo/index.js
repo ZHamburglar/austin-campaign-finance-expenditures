@@ -77,7 +77,7 @@ class GeneralInfo extends Component {
 
 
 	render() {
-		const { loading, name, dataRange, reports, pages, activePage } = this.state;
+		const { loading, name, dataRange, pages, activePage } = this.state;
 		if (loading) {
 			return (
 				<div>

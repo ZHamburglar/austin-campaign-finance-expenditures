@@ -89,7 +89,7 @@ class App extends Component {
 
 		return (
 			<div>
-				This is Broken
+				This is Broken! Please Refresh!
 			</div>
 		);
 	}

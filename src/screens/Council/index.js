@@ -8,6 +8,7 @@ import Loading from '../../components/Loading';
 import GeneralInfo from '../../components/GeneralInfo';
 import PieChart from '../../components/Charts/Pie';
 import HorizontalBar from '../../components/Charts/Bar';
+import TopList from '../../components/TopList';
 
 class Council extends Component {
 	state = {
@@ -46,6 +47,7 @@ class Council extends Component {
 			loading: false,
 			filteredData
 		});
+		console.log('filtered', filteredData)
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -108,10 +110,10 @@ class Council extends Component {
 						</Grid.Row>
 						<Grid.Row>
 							<Grid.Column>
-								<HorizontalBar data={this.state.filteredData} />
+								<TopList data={this.state.filteredData} entity="Individual" />
 							</Grid.Column>
 							<Grid.Column>
-								<HorizontalBar data={this.state.filteredData} />
+								<TopList data={this.state.filteredData} entity="Organizations" />
 							</Grid.Column>
 							<Grid.Column>
 								<HorizontalBar data={this.state.filteredData} />
