@@ -70,6 +70,7 @@ class UpdateModal extends Component {
 												<p>&#8226; {notes}</p>
 											</div>;
 										})}
+										<br />
 									</Modal.Description>
 								</div>;
 							})}

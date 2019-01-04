@@ -13,7 +13,8 @@ class Council extends Component {
 	state = {
 		loading: true,
 		filteredData: null,
-		zipCodes: null
+		zipCodes: null,
+		name: null
 	}
 
 	static propTypes = {
@@ -42,9 +43,10 @@ class Council extends Component {
 		});
 		this.setState({
 			loading: false,
-			filteredData
+			filteredData,
+			name: this.props.match.params.org
 		});
-		console.log('filtered', filteredData)
+		console.log('filtered', filteredData, this.props.match.params.org)
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -80,6 +82,7 @@ class Council extends Component {
 	}
 
 	render() {
+		const { filteredData, name } = this.state;
 		if (this.state.loading) {
 			return (
 				<div
@@ -95,7 +98,7 @@ class Council extends Component {
 				<>
 					<div className="row">
 						<div className="one-third column">
-							<GeneralInfo data={this.state.filteredData} />
+							<GeneralInfo data={this.state.filteredData} name={name} />
 						</div>
 						<div className="one-third column">
 							<PieChart data={this.state.filteredData} />

@@ -13,11 +13,12 @@ class GeneralInfo extends Component {
 		reports: null,
 		pages: null,
 		activePage: null,
-		pageSize: 3,
+		pageSize: 3
 	}
 
 	static propTypes = {
-		data: PropTypes.array.isRequired
+		data: PropTypes.array.isRequired,
+		name: PropTypes.string.isRequired
 	};
 
 	componentDidMount() {
@@ -39,13 +40,25 @@ class GeneralInfo extends Component {
 		dataRange.push(first, last);
 		const reportsArr = Array.from(reportsSet);
 		const pages = Math.ceil(reportsArr.length/3);
+		let name = this.getNameFormat(this.props.name);
 		this.setState({
 			loading: false,
 			dataRange,
 			reports: reportsArr,
 			pages,
-			activePage: 1
+			activePage: 1,
+			name
 		});
+	}
+
+	getNameFormat (value) {
+		const name = value.split(', ');
+		if (name.length > 1) {
+			console.log('name', name)
+			return name[1] + ' ' + name[0];
+		} else {
+			return value;
+		}
 	}
 
 	createReportsList () {
@@ -107,7 +120,7 @@ class GeneralInfo extends Component {
 
 		if (!loading) {
 			return (
-				<div style={{color:'black'}}>
+				<div style={{ color:'black' }}>
 					<div>Name: {name}</div>
 					<Segment.Group raised>
 						<Segment>

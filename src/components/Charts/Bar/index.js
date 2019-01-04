@@ -79,6 +79,7 @@ class BarChart extends Component {
 			if(a.amount < b.amount) { return 1; }
 			return 0;
 		});
+		console.log('This?:', this)
 		this.setState({
 			loading: false,
 			filteredData
@@ -124,16 +125,17 @@ class BarChart extends Component {
 			};
 
 			const chartOptions = {
-				legend: { display: true },
-				tooltips: { enabled: true }
+				legend: { display: false },
+				tooltips: { enabled: true },
+				maintainAspectRatio: false
 			};
 
 			return (
-				<div style={{ backgroundColor: 'black' }}>
+				<div ref={this.myDiv} style={{ color: 'black' }}>
 					<HorizontalBar
 						data={data}
-						width={100}
-						height={100}
+						width={50}
+						height={300}
 						options={chartOptions}
 					/>
 				</div>

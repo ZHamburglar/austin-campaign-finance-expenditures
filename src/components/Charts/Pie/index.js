@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
-import { Grid } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
+
 
 
 class PieChart extends Component {
@@ -94,26 +95,20 @@ class PieChart extends Component {
 		};
 
 		return (
-			<div style={{ backgroundColor: 'black' }}>
-				<Grid>
-					<Grid.Row columns={1}>
-						<Grid.Column>
-							<p>Contribution Amount</p>
-						</Grid.Column>
-					</Grid.Row>
-					<Grid.Row columns={2}>
-						<Grid.Column>
-							<p>Total: ${total}</p>
-						</Grid.Column>
-						<Grid.Column>
-							<p>Mean: ${mean}</p>
-						</Grid.Column>
-					</Grid.Row>
-				</Grid>
+			<div style={{ color: 'black' }}>
+				<Segment.Group raised>
+					<Segment>
+						<p>Contribution Amount</p>
+					</Segment>
+					<Segment.Group horizontal>
+						<Segment>Total: ${total}</Segment>
+						<Segment>Mean: ${mean}</Segment>
+					</Segment.Group>
+				</Segment.Group>
 				<Doughnut
 					data={data}
-					width={100}
-					height={100}
+					width={80}
+					height={80}
 					options={chartOptions}
 				/>
 			</div>

@@ -77,10 +77,11 @@ class TopList extends Component {
 		} else if (this.state.activePage === this.state.pages) {
 			let j = x - i;
 			for (i; i < x; i++) {
+				let roundTransaction = parseInt(this.state.topContributors[i].transaction_amount, 10).toFixed(2);
 				contributionsList.push(
 					<Table.Row key={i}>
 						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
-						<Table.Cell textAlign='right'>${this.state.topContributors[i].transaction_amount}</Table.Cell>
+						<Table.Cell textAlign='right'>${roundTransaction}</Table.Cell>
 					</Table.Row>
 				);
 			}
@@ -94,11 +95,11 @@ class TopList extends Component {
 			}
 		} else {
 			for (i; i < x; i++) {
-				console.log('top cont', this.state.topContributors, i, x, this.state.pages);
+				let roundTransaction = parseInt(this.state.topContributors[i].transaction_amount, 10).toFixed(2);
 				contributionsList.push(
 					<Table.Row key={i}>
 						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
-						<Table.Cell textAlign='right'>${this.state.topContributors[i].transaction_amount}</Table.Cell>
+						<Table.Cell textAlign='right'>${roundTransaction}</Table.Cell>
 					</Table.Row>
 				);
 			}
