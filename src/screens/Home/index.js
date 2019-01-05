@@ -62,7 +62,6 @@ class Home extends Component {
 		}
 		const individualArr = Array.from(individuals);
 		const entitiesArr = Array.from(entities);
-		console.log(this.props)
 		this.setState({
 			contributions,
 			expenditures,
@@ -71,17 +70,39 @@ class Home extends Component {
 			credit,
 			council,
 			PACS,
-			individuals: individualArr,
-			entities: entitiesArr
+			individuals: individualArr.length,
+			entities: entitiesArr.length
 		});
 	}
 
 	render () {
 		const { open } = this.props;
+		const {
+			contributions,
+			expenditures,
+			loans,
+			pledges,
+			credit,
+			council,
+			PACS,
+			individuals,
+			entities
+		} = this.state;
+
 		if (!open) {
 			return (
 				<div>
-					<Presentation />
+					<Presentation
+						contributions={contributions}
+						expenditures={expenditures}
+						loans={loans}
+						pledges={pledges}
+						credit={credit}
+						council={council}
+						PACS={PACS}
+						individuals={individuals}
+						entities={entities}
+					/>
 				</div>
 			);
 		}

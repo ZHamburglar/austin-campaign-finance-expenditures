@@ -3,45 +3,109 @@ import React, { Component } from 'react';
 import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 
-// Local Components
-import UpdateModal from '../../components/Modal';
-
 class HomePresentation extends Component {
-	// static propTypes = {
-	// 	data: PropTypes.array.isRequired
-	// };
+	static propTypes = {
+		contributions: PropTypes.number.isRequired,
+		expenditures: PropTypes.number.isRequired,
+		loans: PropTypes.number.isRequired,
+		pledges: PropTypes.number.isRequired,
+		credit: PropTypes.number.isRequired,
+		council: PropTypes.number.isRequired,
+		PACS: PropTypes.number.isRequired,
+		individuals: PropTypes.number.isRequired,
+		entities: PropTypes.number.isRequired,
+	};
 
 	componentDidMount() {
-		// console.log('hello', this.props.data);
+		console.log(this.props);
 	}
 
 	render () {
+		const {
+			contributions,
+			expenditures,
+			loans,
+			pledges,
+			credit,
+			council,
+			PACS,
+			individuals,
+			entities
+		} = this.props;
 		return (
 			<div>
-				<h1>Work In Progress</h1>
-				<CountUp end={100} />
-
-				<CountUp
-					start={-875.039}
-					end={160527.012}
-					duration={2.75}
-					separator=" "
-					decimals={4}
-					decimal=","
-					prefix="EUR "
-					suffix=" left"
-					onEnd={() => console.log('Ended! 👏')}
-					onStart={() => console.log('Started! 💨')}
-				>
-					{({ countUpRef, start }) => (
-						<div>
-							<span ref={countUpRef} />
-							<button onClick={start}>Start</button>
-						</div>
-					)}
-				</CountUp>
-
-				<UpdateModal />
+				<div>
+					<CountUp
+						end={contributions}
+						delay={.3}
+						duration={2.75}
+					/>
+					Contributions
+				</div>
+				<div>
+					<CountUp
+						end={expenditures}
+						delay={.3}
+						duration={2.75}
+					/>
+					Expenditures
+				</div>
+				<div>
+					<CountUp
+						end={loans}
+						delay={.3}
+						duration={2.75}
+					/>
+					Loans
+				</div>
+				<div>
+					<CountUp
+						end={pledges}
+						delay={.3}
+						duration={2.75}
+					/>
+					Pledges
+				</div>
+				<div>
+					<CountUp
+						end={credit}
+						delay={.3}
+						duration={2.75}
+					/>
+					Credit
+				</div>
+				<div>
+					<CountUp
+						end={council}
+						delay={.3}
+						duration={2.75}
+					/>
+					Council
+				</div>
+				<div>
+					<CountUp
+						end={PACS}
+						delay={.3}
+						duration={2.75}
+					/>
+					PACS
+				</div>
+				<div>
+					<CountUp
+						end={individuals}
+						delay={.3}
+						duration={2.75}
+					/>
+					Individuals
+				</div>
+				<div>
+					<CountUp
+						end={entities}
+						delay={.3}
+						duration={2.75}
+					/>
+					entities
+				</div>
 			</div>
 		);
 	};
