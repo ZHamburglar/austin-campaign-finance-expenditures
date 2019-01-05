@@ -24,7 +24,7 @@ class App extends Component {
 	}
 
 	getData() {
-		axios.get('https://data.austintexas.gov/resource/asyh-u6ja.json?$limit=7000')
+		axios.get('https://data.austintexas.gov/resource/asyh-u6ja.json?$limit=9000')
 			.then((response) => {
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
@@ -78,7 +78,7 @@ class App extends Component {
 						<Navbar organizations={this.state.organizations} />
 						<MainContainer>
 							<Main>
-								<Route exact path='/' component={withTracker(Home)} />
+								<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />
 								<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
 								<Route exact path='/settings' component={withTracker(Settings)} />
 							</Main>

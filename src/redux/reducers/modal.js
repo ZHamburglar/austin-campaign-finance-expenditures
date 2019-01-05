@@ -1,7 +1,7 @@
 export const CHANGE_MODAL = 'modal/CHANGE_MODAL';
 
 const initialState = {
-	open: false
+	open: true
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
 	case CHANGE_MODAL:
 		return {
 			...state,
-			open: true
+			open: false
 		};
 	default:
 		return state;
