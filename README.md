@@ -15,6 +15,10 @@ Then commit to the repo.
 Linear Progress: https://material-ui.com/demos/progress/
 Dropdown Select: https://material-ui.com/demos/selects/
 
+## Semantic UI Theming
+
+http://semantic-ui-forest.com/themes/
+
 ## Todo's
 * Decide CSS and Layout
 * Search for Users
@@ -22,3 +26,4 @@ Dropdown Select: https://material-ui.com/demos/selects/
 * Zip Code Searching
 * Color Coding for Legends where appropriate
 * On popup pulls up the latest release notes.
+* Add to Calendar Button for voting dates: https://jasonsalzman.github.io/react-add-to-calendar/

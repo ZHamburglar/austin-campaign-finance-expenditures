@@ -38,6 +38,7 @@ code {
 
 
 .row {
+	position: relative;
 	height: 50%;
 	overflow: hidden;
 }

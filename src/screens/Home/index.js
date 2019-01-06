@@ -91,7 +91,7 @@ class Home extends Component {
 
 		if (!open) {
 			return (
-				<div>
+				<>
 					<Presentation
 						contributions={contributions}
 						expenditures={expenditures}
@@ -103,13 +103,13 @@ class Home extends Component {
 						individuals={individuals}
 						entities={entities}
 					/>
-				</div>
+				</>
 			);
 		}
 		return (
-			<div>
+			<>
 				<UpdateModal />
-			</div>
+			</>
 		);
 	};
 };
