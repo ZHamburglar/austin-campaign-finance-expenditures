@@ -4,6 +4,18 @@ import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+// Local Components
+import {
+	Row,
+	Column,
+	InfoContainer,
+	Info,
+	MetricContainer,
+	Number,
+	Metric,
+	VoterButton
+} from './components';
+
 class HomePresentation extends Component {
 	state = {
 		months: null,
@@ -31,7 +43,7 @@ class HomePresentation extends Component {
 		let months;
 		let monthsString;
 		let daysString;
-		const vote = moment('2020-11-08').diff(moment(), 'milliseconds');
+		const vote = moment('2019-11-05').diff(moment(), 'milliseconds');
 		const duration = moment.duration(vote);
 		if (duration._data.years > 0) {
 			months = duration._data.years * 12 + duration._data.months;
@@ -79,103 +91,160 @@ class HomePresentation extends Component {
 
 		return (
 			<>
-				<div className="row">
-					<div className="one-third column" style={{ background:'tomato' }}>
-						<div>
-							<CountUp
-								end={contributions}
-								delay={.3}
-								duration={2.75}
-							/>
-							Contributions
-						</div>
-						<div>
-							<CountUp
-								end={expenditures}
-								delay={.3}
-								duration={2.75}
-							/>
-							Expenditures
-						</div>
-					</div>
-					<div className="one-third column" style={{ background:'purple' }}>
-						<div>
-							<CountUp
-								end={loans}
-								delay={.3}
-								duration={2.75}
-							/>
-							Loans
-						</div>
-						<div>
-							<CountUp
-								end={pledges}
-								delay={.3}
-								duration={2.75}
-							/>
-							Pledges
-						</div>
-						<div>
-							<CountUp
-								end={credit}
-								delay={.3}
-								duration={2.75}
-							/>
-							Credit
-						</div>
-					</div>
-					<div className="one-third column" style={{ background:'blue' }}>
-						<div>
+				<Row>
+					<Column>
+						<InfoContainer>
+							<Info>
+								<div>Add</div>
+								<div>Something</div>
+								<div>Here</div>
+							</Info>
+						</InfoContainer>
+					</Column>
+
+					<Column>
+						<MetricContainer>
+							<Number>
+								<CountUp
+									end={expenditures}
+									delay={.3}
+									duration={2.75}
+								/>
+								<Metric>
+									Expenditures
+								</Metric>
+							</Number>	
+						</MetricContainer>
+						<MetricContainer>
+							<Number>
+								<CountUp
+									end={contributions}
+									delay={.3}
+									duration={2.75}
+								/>
+								<Metric>
+									Contributions
+								</Metric>
+							</Number>
+						</MetricContainer>
+
+						<MetricContainer>
+							<Number>
+								<CountUp
+									end={loans}
+									delay={.3}
+									duration={2.75}
+								/>
+								<Metric>
+									Loans
+								</Metric>
+							</Number>
+						</MetricContainer>
+						<MetricContainer>
+							<Number>
+								<CountUp
+									end={pledges}
+									delay={.3}
+									duration={2.75}
+								/>
+								<Metric>
+									Pledges
+								</Metric>
+							</Number>
+						</MetricContainer>
+						<MetricContainer>
+							<Number>
+								<CountUp
+									end={credit}
+									delay={.3}
+									duration={2.75}
+								/>
+								<Metric>
+									Credit
+								</Metric>
+							</Number>
+						</MetricContainer>
+					</Column>
+					<Column>
+						<Number>
 							<CountUp
 								end={council}
 								delay={.3}
 								duration={2.75}
 							/>
-							Council
-						</div>
-					</div>
-				</div>
-				<div className="row">
-					<div className="one-third column" style={{ background:'red' }}>
-						<div>
+							<Metric>
+								Council
+							</Metric>
+						</Number>
+					</Column>
+				</Row>
+				<Row>
+					<Column>
+						<Number>
+							<CountUp
+								end={council}
+								delay={.3}
+								duration={2.75}
+							/>
+							<Metric>
+								Council
+							</Metric>
+						</Number>
+						<Number>
 							<CountUp
 								end={PACS}
 								delay={.3}
 								duration={2.75}
 							/>
-							PACS
-						</div>
-					</div>
-					<div className="one-third column">
-						<div>
+							<Metric>
+								PACS
+							</Metric>
+						</Number>
+					</Column>
+					<Column>
+						<Number>
 							<CountUp
 								end={individuals}
 								delay={.3}
 								duration={2.75}
 							/>
-							Individuals
-						</div>
-						<div>
+							<Metric>
+								Individuals
+							</Metric>
+						</Number>
+						<Number>
 							<CountUp
 								end={entities}
 								delay={.3}
 								duration={2.75}
 							/>
-							entities
-						</div>
-					</div>
-					<div className="one-third column">
+							<Metric>
+								Entities
+							</Metric>
+						</Number>
+					</Column>
+					<Column>
 						<div>
+							<Number>
+								{months}
+								<Metric>
+									{monthsString}
+								</Metric>
+							</Number>
+							<Number>
+								{days}
+								<Metric>
+									{daysString}
+								</Metric>
+							</Number>
 							<br />
-							{months} {monthsString}
-							<br />
-							{days} {daysString} until the next election.
+							until the next election.
 						</div>
 						<div>
-							<a href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</a>
+							<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
 						</div>
-					</div>
-				</div>
+					</Column>
+				</Row>
 			</>
 		);
 	};

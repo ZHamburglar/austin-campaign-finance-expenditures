@@ -4,6 +4,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
+	font-size: 1em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -85,11 +86,17 @@ code {
 /* Styling */
 
 .column {
-  padding: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+	display: flex;
+	flex-direction: column;
 }
 
 h1 {
   text-align: center;
+  flex-direction: row
+}
+
+.halfContainer {
+	display: flex;
+	height: 50%;
+
 }
