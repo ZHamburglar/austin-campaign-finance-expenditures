@@ -32,7 +32,7 @@ class TopList extends Component {
 		const { pageSize } = this.state;
 		const { entity } = this.props;
 		const contributors = [];
-		this.props.data.Contributions.filter((transaction) => {
+		this.props.data.filter((transaction) => {
 			if (transaction.entity === 'Individual' && entity === 'Individuals') {
 				contributors.push(transaction);
 				return true;

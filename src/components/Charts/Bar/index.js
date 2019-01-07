@@ -18,7 +18,7 @@ class BarChart extends Component {
 	};
 
 	componentDidMount() {
-		(this.props.data.Contributions.length) ? this.filterPie(this.props.data) : this.noDataPie(this.props.data);
+		(this.props.data.length) ? this.filterPie(this.props.data) : this.noDataPie(this.props.data);
 	}
 
 	noDataPie() {
@@ -30,7 +30,7 @@ class BarChart extends Component {
 
 	filterPie() {
 		let filteredData = [];
-		this.props.data.Contributions.filter((transaction) => {
+		this.props.data.filter((transaction) => {
 			let newZip;
 			if (transaction.transactor_zip_code === undefined) {
 				if (transaction.transactor_city.length > 1 ) {

@@ -26,7 +26,7 @@ class PieChart extends Component {
 	filterPie() {
 		let filteredData = [ 0, 0, 0, 0, 0];
 		let total = 0;
-		this.props.data.Contributions.filter((transaction) => {
+		this.props.data.filter((transaction) => {
 			if (transaction.transaction_amount > 0 && transaction.transaction_amount <= 100) {
 				total = total + parseInt(transaction.transaction_amount, 10);
 				filteredData[0]++;
@@ -45,7 +45,7 @@ class PieChart extends Component {
 			}
 			return null;
 		});
-		let mean = parseFloat(total/this.props.data.Contributions.length).toFixed(2);
+		let mean = parseFloat(total/this.props.data.length).toFixed(2);
 		this.setState({
 			loading: false,
 			filteredData,

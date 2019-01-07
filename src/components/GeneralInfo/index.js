@@ -30,11 +30,11 @@ class GeneralInfo extends Component {
 	filterData() {
 		const dataRange = [];
 		let reportsSet = new Set();
-		this.props.data.Contributions.filter((transaction) => {
+		this.props.data.filter((transaction) => {
 			reportsSet.add(transaction.report_type + " '"+ moment(transaction.transaction_date).format("YY"));
 			return null;
 		});
-		let moments = this.props.data.Contributions.map((date) => moment(date.transaction_date)),
+		let moments = this.props.data.map((date) => moment(date.transaction_date)),
 			first = moment.min(moments).format("MM-DD-YYYY"),
 			last = moment.max(moments).format("MM-DD-YYYY");
 		dataRange.push(first, last);
