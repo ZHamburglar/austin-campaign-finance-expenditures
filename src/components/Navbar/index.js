@@ -10,6 +10,9 @@ import {
 } from 'semantic-ui-react';
 import { DatesRangeInput } from 'semantic-ui-calendar-react';
 
+// Local Components
+import { changeFilterDate } from '../../redux/reducers/dates';
+
 class Navbar extends Component {
 	static propTypes = {
 		organizations: PropTypes.array.isRequired,
@@ -34,9 +37,12 @@ class Navbar extends Component {
 
 	handleChange = (e, { name, value }) => {
 		// console.log("date: ", name, value)
+		const dates = value.split(' - ');
+		console.log('dates', dates)
 		if (this.state.hasOwnProperty(name)) {
 			this.setState({ [name]: value });
 		}
+		this.props.changeFilterDate({ dates });
 	}
 
 	submitSearch = (e) => {
@@ -99,12 +105,17 @@ class Navbar extends Component {
 	}
 }
 
+// const mapStateToProps = ({ dates }) => ({
+// 	filterDates: dates.filterDates
+// });
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
 	changeHomePage: () => push('/'),
 	changeSettingPage: () => push('/settings'),
 	changeOrgPage: (org) => push('/council/' + org, {
 		hello: "state value"
 	}),
+	changeFilterDate
 }, dispatch);
 
 export default connect(null, mapDispatchToProps)(Navbar);
