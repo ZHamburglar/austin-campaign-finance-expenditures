@@ -1,6 +1,8 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import moment from 'moment';
 
 // Local Components
 import Loading from '../../components/Loading';
@@ -41,12 +43,28 @@ class Council extends Component {
 			}
 			return null;
 		});
+		// If there is no date filter run this
+
+		// If there is a date filter this run this
+		this.setState({
+			name: this.props.match.params.org
+		}, this.filterByDate(filteredData));
+	}
+
+	filterByDate(data) {
+		let dateFiltered = [];
+		data.Contributions.filter((transaction) => {
+			if (moment(transaction.transaction_date).isSameOrAfter('2016-6-21')) {
+				console.log(transaction)
+				dateFiltered.push(transaction);
+			}
+			return null;
+		});
+		console.log('data?', data, this.props, dateFiltered);
 		this.setState({
 			loading: false,
-			filteredData,
-			name: this.props.match.params.org
+			filteredData: data
 		});
-		console.log('filtered', filteredData, this.props.match.params.org)
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -130,4 +148,8 @@ class Council extends Component {
 	}
 }
 
-export default Council;
+const mapStateToProps = ({ dates }) => ({
+	filterDates: dates.filterDates
+});
+
+export default connect(mapStateToProps, null)(Council);
