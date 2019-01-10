@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 import {
 	Dropdown,
 	Menu,
@@ -32,24 +33,21 @@ class Navbar extends Component {
 	}
 
 	handleOrgChange = (e, data) => {
-		this.props.changeOrgPage(data.value);
+		// Create the query string for the parameters
+		let query;
+		const dates = this.state.datesRange.split(' - ');
+		if (dates.length > 0 && dates[0].length > 0) {
+			query = queryString.stringify({ from: dates[0], to: dates[1] });
+		}
+		this.props.changeOrgPage(data.value, query);
 	}
 
 	handleChange = (e, { name, value }) => {
-		// console.log("date: ", name, value)
 		const dates = value.split(' - ');
 		if (this.state.hasOwnProperty(name)) {
 			this.setState({ [name]: value });
 		}
 		this.props.changeFilterDate({ dates });
-	}
-
-	submitSearch = (e) => {
-		let names = this.getName(this.state.data, 'expenditure_type', this.state.searchinput);
-		this.setState({
-			filteredData: names
-		});
-		e.preventDefault();
 	}
 
 	render() {
@@ -114,9 +112,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 		search: '?filter=homepagefilter',
 	}),
 	changeSettingPage: () => push('/settings'),
-	changeOrgPage: (org) => push({
+	changeOrgPage: (org, query) => push({
 		pathname: '/council/' + org,
-		search: '?filter=abc',
+		search: query,
 		state: {
 			hello: "state value"
 		}

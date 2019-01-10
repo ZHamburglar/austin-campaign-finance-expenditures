@@ -5,6 +5,7 @@
 * PACs now load Top 20 Lists properly.
 * Home Page now renders on Modal Close
 * Added next election Day countdown and link to Register to Vote
+* Early implementation of query string filtering
 
 ### 0.0.1
 
