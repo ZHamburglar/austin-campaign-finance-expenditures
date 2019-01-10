@@ -52,19 +52,26 @@ class Council extends Component {
 	}
 
 	filterByDate(data) {
+		const { filterDates } = this.props;
 		let dateFiltered = [];
-		data.Contributions.filter((transaction) => {
-			if (moment(transaction.transaction_date).isSameOrAfter('2016-8-21')) {
-				// console.log(transaction)
-				dateFiltered.push(transaction);
-			}
-			return null;
-		});
-		console.log('data?', data, this.props, "date filtered", dateFiltered);
-		this.setState({
-			loading: false,
-			filteredData: dateFiltered
-		});
+		if ( filterDates ) {
+			data.Contributions.filter((transaction) => {
+				if (moment(transaction.transaction_date).isSameOrAfter(filterDates[0]) && moment(transaction.transaction_date).isSameOrBefore(filterDates[1])) {
+					dateFiltered.push(transaction);
+				}
+				return null;
+			});
+			this.setState({
+				loading: false,
+				filteredData: dateFiltered
+			});
+
+		} else {
+			this.setState({
+				loading: false,
+				filteredData: data.Contributions
+			});
+		}
 	}
 
 	createZipCodeList(selectedOrganization) {
