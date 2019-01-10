@@ -32,6 +32,7 @@ class Council extends Component {
 	}
 
 	filterData(targetOrg) {
+		const { filterDates } = this.props;
 		let filteredData = [];
 		filteredData.Contributions = [];
 		filteredData.Expenditures = [];
@@ -43,35 +44,33 @@ class Council extends Component {
 			}
 			return null;
 		});
-		// If there is no date filter run this
-
-		// If there is a date filter this run this
-		this.setState({
-			name: this.props.match.params.org
-		}, this.filterByDate(filteredData));
+		if (filterDates) {
+			this.setState({
+				name: this.props.match.params.org
+			}, this.filterByDate(filteredData));
+		} else {
+			this.setState({
+				name: this.props.match.params.org,
+				loading: false,
+				filteredData: filteredData.Contributions
+			});
+		}
 	}
 
 	filterByDate(data) {
+		console.log('huh?')
 		const { filterDates } = this.props;
 		let dateFiltered = [];
-		if ( filterDates ) {
-			data.Contributions.filter((transaction) => {
-				if (moment(transaction.transaction_date).isSameOrAfter(filterDates[0]) && moment(transaction.transaction_date).isSameOrBefore(filterDates[1])) {
-					dateFiltered.push(transaction);
-				}
-				return null;
-			});
-			this.setState({
-				loading: false,
-				filteredData: dateFiltered
-			});
-
-		} else {
-			this.setState({
-				loading: false,
-				filteredData: data.Contributions
-			});
-		}
+		data.Contributions.filter((transaction) => {
+			if (moment(transaction.transaction_date).isSameOrAfter(filterDates[0]) && moment(transaction.transaction_date).isSameOrBefore(filterDates[1])) {
+				dateFiltered.push(transaction);
+			}
+			return null;
+		});
+		this.setState({
+			loading: false,
+			filteredData: dateFiltered
+		});
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -118,7 +117,7 @@ class Council extends Component {
 			);
 		}
 
-		if (this.state.filteredData) {
+		if (filteredData) {
 			return (
 				<>
 					<div className="row">

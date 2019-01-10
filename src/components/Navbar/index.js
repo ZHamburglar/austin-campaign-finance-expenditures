@@ -38,7 +38,6 @@ class Navbar extends Component {
 	handleChange = (e, { name, value }) => {
 		// console.log("date: ", name, value)
 		const dates = value.split(' - ');
-		console.log('dates', dates)
 		if (this.state.hasOwnProperty(name)) {
 			this.setState({ [name]: value });
 		}
@@ -110,10 +109,17 @@ class Navbar extends Component {
 // });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-	changeHomePage: () => push('/'),
+	changeHomePage: () => push({
+		pathname: '/',
+		search: '?filter=homepagefilter',
+	}),
 	changeSettingPage: () => push('/settings'),
-	changeOrgPage: (org) => push('/council/' + org, {
-		hello: "state value"
+	changeOrgPage: (org) => push({
+		pathname: '/council/' + org,
+		search: '?filter=abc',
+		state: {
+			hello: "state value"
+		}
 	}),
 	changeFilterDate
 }, dispatch);
