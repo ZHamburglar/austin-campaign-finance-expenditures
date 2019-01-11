@@ -9,6 +9,10 @@ export const Row = styled.div`
 `;
 
 export const Column = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	color: blue;
 	width: calc(100% / 3);
 `;
@@ -29,6 +33,7 @@ export const Info = styled.div`
 export const Number = styled.div`
 	font-size: 250%;
 	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 `;
 
 export const Metric = styled.span`

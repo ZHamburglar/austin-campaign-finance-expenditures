@@ -54,7 +54,7 @@ class GeneralInfo extends Component {
 	getNameFormat (value) {
 		const name = value.split(', ');
 		if (name.length > 1) {
-			console.log('name', name)
+			console.log('name', name);
 			return name[1] + ' ' + name[0];
 		} else {
 			return value;
@@ -121,8 +121,10 @@ class GeneralInfo extends Component {
 		if (!loading) {
 			return (
 				<div style={{ color:'black' }}>
-					<div>Name: {name}</div>
 					<Segment.Group raised>
+						<Segment>
+							{name}
+						</Segment>
 						<Segment>
 							<p>Date Range:</p>
 						</Segment>

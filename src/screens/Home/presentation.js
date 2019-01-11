@@ -93,6 +93,53 @@ class HomePresentation extends Component {
 			<>
 				<Row>
 					<Column>
+						<Number>
+							<CountUp
+								end={individuals}
+								delay={.3}
+								duration={2.75}
+							/>
+							<Metric>
+								Individuals
+							</Metric>
+						</Number>
+						<Number>
+							<CountUp
+								end={entities}
+								delay={.3}
+								duration={2.75}
+							/>
+							<Metric>
+								Entities
+							</Metric>
+						</Number>
+					</Column>
+					<Column>
+						<Number>
+							<CountUp
+								end={council}
+								delay={.3}
+								duration={2.75}
+							/>
+							<Metric>
+								Council
+							</Metric>
+						</Number>
+						<Number>
+							<CountUp
+								end={PACS}
+								delay={.3}
+								duration={2.75}
+							/>
+							<Metric>
+								PACS
+							</Metric>
+						</Number>
+					</Column>
+
+
+					
+					<Column>
 						<InfoContainer>
 							<Info>
 								<div>Add</div>
@@ -101,7 +148,8 @@ class HomePresentation extends Component {
 							</Info>
 						</InfoContainer>
 					</Column>
-
+				</Row>
+				<Row>
 					<Column>
 						<MetricContainer>
 							<Number>
@@ -113,7 +161,7 @@ class HomePresentation extends Component {
 								<Metric>
 									Expenditures
 								</Metric>
-							</Number>	
+							</Number>
 						</MetricContainer>
 						<MetricContainer>
 							<Number>
@@ -166,63 +214,16 @@ class HomePresentation extends Component {
 						</MetricContainer>
 					</Column>
 					<Column>
-						<Number>
-							<CountUp
-								end={council}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Council
-							</Metric>
-						</Number>
+						<InfoContainer>
+							<Info>
+								<div>Add</div>
+								<div>Something</div>
+								<div>Here</div>
+							</Info>
+						</InfoContainer>
 					</Column>
-				</Row>
-				<Row>
-					<Column>
-						<Number>
-							<CountUp
-								end={council}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Council
-							</Metric>
-						</Number>
-						<Number>
-							<CountUp
-								end={PACS}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								PACS
-							</Metric>
-						</Number>
-					</Column>
-					<Column>
-						<Number>
-							<CountUp
-								end={individuals}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Individuals
-							</Metric>
-						</Number>
-						<Number>
-							<CountUp
-								end={entities}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Entities
-							</Metric>
-						</Number>
-					</Column>
+
+
 					<Column>
 						<div>
 							<Number>

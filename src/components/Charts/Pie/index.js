@@ -104,13 +104,13 @@ class PieChart extends Component {
 						<Segment>Total: ${total}</Segment>
 						<Segment>Mean: ${mean}</Segment>
 					</Segment.Group>
+					<Doughnut
+						data={data}
+						width={80}
+						height={80}
+						options={chartOptions}
+					/>
 				</Segment.Group>
-				<Doughnut
-					data={data}
-					width={80}
-					height={80}
-					options={chartOptions}
-				/>
 			</div>
 		);
 
