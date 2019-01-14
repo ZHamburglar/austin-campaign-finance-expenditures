@@ -21,9 +21,24 @@ http://semantic-ui-forest.com/themes/
 
 ## Todo's
 * Decide CSS and Layout
-* Search for Users
 * Expenditures
-* Zip Code Searching
-* Color Coding for Legends where appropriate
-* On popup pulls up the latest release notes.
+
+### Structure
+* Add Contributors Route
+
+### NavBar
+* Search Input for Users
+
+### Home
+* Build last two panels
 * Add to Calendar Button for voting dates: https://jasonsalzman.github.io/react-add-to-calendar/
+
+### Contributors
+
+### Organizations
+* Users link to their corresponding Contributors Page
+* Color Coding for Legends where appropriate
+* Zip Code Searching
+
+
+

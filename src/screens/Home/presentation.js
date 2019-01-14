@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Local Components
+import VotingButton from '../../components/Buttons/VotingButton';
 import {
 	Row,
 	Column,
@@ -176,7 +177,7 @@ class HomePresentation extends Component {
 							</Number>
 						</MetricContainer>
 
-						<MetricContainer>
+						{/* <MetricContainer>
 							<Number>
 								<CountUp
 									end={loans}
@@ -211,7 +212,7 @@ class HomePresentation extends Component {
 									Credit
 								</Metric>
 							</Number>
-						</MetricContainer>
+						</MetricContainer> */}
 					</Column>
 					<Column>
 						<InfoContainer>
@@ -244,6 +245,7 @@ class HomePresentation extends Component {
 						<div>
 							<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
 						</div>
+						<VotingButton name='kevin' />
 					</Column>
 				</Row>
 			</>
