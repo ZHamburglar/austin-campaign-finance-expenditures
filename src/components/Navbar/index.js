@@ -12,12 +12,14 @@ import {
 import { DatesRangeInput } from 'semantic-ui-calendar-react';
 
 // Local Components
-import NavSearch from '../NavSearch';
+import NavSearch from './NavSearch';
 import { changeFilterDate } from '../../redux/reducers/dates';
 
 class Navbar extends Component {
 	static propTypes = {
 		organizations: PropTypes.array.isRequired,
+		office: PropTypes.array.isRequired,
+		contributors: PropTypes.array.isRequired
 	};
 
 	state = {
@@ -84,6 +86,9 @@ class Navbar extends Component {
 						</Dropdown.Menu>
 					</Dropdown>
 					<Menu.Item>
+						<NavSearch office={this.props.office} contributors={this.props.contributors} />
+					</Menu.Item>
+					<Menu.Item>
 						<DatesRangeInput
 							name="datesRange"
 							placeholder="From - To"
@@ -92,9 +97,6 @@ class Navbar extends Component {
 							value={this.state.datesRange}
 							iconPosition="left"
 							onChange={this.handleChange} />
-					</Menu.Item>
-					<Menu.Item>
-						<NavSearch />
 					</Menu.Item>
 					<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
 						Settings

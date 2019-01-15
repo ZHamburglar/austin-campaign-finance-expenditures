@@ -18,6 +18,8 @@ class App extends Component {
 		loading: true,
 		data: null,
 		organizations: null,
+		contributors: null,
+		office: null
 	}
 
 	componentDidMount() {
@@ -31,12 +33,25 @@ class App extends Component {
 				let orgs = [];
 				// console.log(response.data)
 				let organizations = [];
+				let contributions = 0,
+					individuals = new Set(),
+					entities = new Set();
 				organizations.Council = [];
 				organizations.Organizations = [];
 				response.data.filter((item) => {
 					const i = orgs.findIndex((x) => x.filer_name === item.filer_name);
 					if(i <= -1) {
 						orgs.push({ filer_name: item.filer_name, form: item.form });
+					}
+					return null;
+				});
+				// Change this here to new properties:
+				// https://stackoverflow.com/questions/52106582/how-can-i-change-property-names-of-objects-in-an-array
+				response.data.filter((item) => {
+					if (item.entity === 'Individual') {
+						individuals.add(item.transactor_name);
+					} else if (item.entity === 'Entity') {
+						entities.add(item.transactor_name);
 					}
 					return null;
 				});
@@ -53,10 +68,21 @@ class App extends Component {
 					}
 					return null;
 				});
+				const contributors = Array.from(individuals);
+				const office = Array.from(entities);
+				const newConts = contributors.map((row) => {
+					return { title: row };
+				});
+				const newOrgs = office.map((row) => {
+					return { title: row };
+				});
+				console.log('conts?', newConts)
 				this.setState({
 					loading: false,
 					data: response.data,
-					organizations
+					organizations,
+					contributors: newConts,
+					office: newOrgs
 				});
 			})
 			.catch(function (error) {
@@ -76,7 +102,7 @@ class App extends Component {
 		if (this.state.data) {
 			return (
 				<>
-						<Navbar organizations={this.state.organizations} />
+						<Navbar organizations={this.state.organizations} office={this.state.office} contributors={this.state.contributors} />
 						<MainContainer>
 							<Main>
 								<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />

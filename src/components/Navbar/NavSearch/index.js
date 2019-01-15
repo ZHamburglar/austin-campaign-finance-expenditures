@@ -1,31 +1,31 @@
+// Node Modules
 import _ from 'lodash';
-import faker from 'faker';
 import React, { Component } from 'react';
-import { Search, Grid, Header, Segment } from 'semantic-ui-react';
+import { Search } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-const getResults = () =>
-	_.times(5, () => ({
-		title: faker.company.companyName(),
-		description: faker.company.catchPhrase(),
-		image: faker.internet.avatar(),
-		price: faker.finance.amount(0, 100, 2, '$'),
-	}));
-
-const source = _.range(0, 3).reduce((memo) => {
-	const name = faker.hacker.noun();
-
-	// eslint-disable-next-line no-param-reassign
-	memo[name] = {
-		name,
-		results: getResults(),
+class NavSearch extends Component {
+	state = {
+		searchObject: null
+	}
+	static propTypes = {
+		office: PropTypes.array.isRequired,
+		contributors: PropTypes.array.isRequired
 	};
 
-	return memo;
-}, {});
-
-export default class NavSearch extends Component {
 	componentWillMount() {
+		this.loadingResults();
 		this.resetComponent();
+	}
+
+	loadingResults() {
+		const offices = Object.assign({ name: 'offices', results: this.props.office }, {});
+		const contributors = Object.assign({ name: 'contributor', results: this.props.contributors }, {});
+		const searchObject = Object.assign({ office: offices, contributor: contributors });
+		console.log('search', searchObject)
+		this.setState({
+			searchObject
+		});
 	}
 
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
@@ -36,16 +36,19 @@ export default class NavSearch extends Component {
 		this.setState({ isLoading: true, value });
 
 		setTimeout(() => {
-			if (this.state.value.length < 1) {return this.resetComponent()};
+			if (this.state.value.length < 1) {
+				return this.resetComponent(); 
+			};
 			const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
 			const isMatch = (result) => re.test(result.title);
-
 			const filteredResults = _.reduce(
-				source,
-				(memo, data, name) => {
+				this.state.searchObject,
+				(org, data, name) => {
 					const results = _.filter(data.results, isMatch);
-					if (results.length) {memo[name] = { name, results }}; // eslint-disable-line no-param-reassign
-					return memo;
+					if (results.length) {
+						org[name] = { name, results };
+					}; // eslint-disable-line no-param-reassign
+					return org;
 				},
 				{},
 			);
@@ -73,3 +76,5 @@ export default class NavSearch extends Component {
 		);
 	}
 }
+
+export default NavSearch
