@@ -19,7 +19,9 @@ class App extends Component {
 		data: null,
 		organizations: null,
 		contributors: null,
-		office: null
+		office: null,
+		newPACS: null,
+		newCouncil: null
 	}
 
 	componentDidMount() {
@@ -76,13 +78,21 @@ class App extends Component {
 				const newOrgs = office.map((row) => {
 					return { title: row };
 				});
-				console.log('conts?', newConts)
+				const newCouncil = organizations.Council.map((row) => {
+					return { title: row.filer_name };
+				});
+				console.log('newCouncil', newCouncil)
+				const newPACS = organizations.Organizations.map((row) => {
+					return { title: row.filer_name };
+				});
 				this.setState({
 					loading: false,
 					data: response.data,
 					organizations,
 					contributors: newConts,
-					office: newOrgs
+					office: newOrgs,
+					newPACS,
+					newCouncil
 				});
 			})
 			.catch(function (error) {
@@ -102,7 +112,13 @@ class App extends Component {
 		if (this.state.data) {
 			return (
 				<>
-						<Navbar organizations={this.state.organizations} office={this.state.office} contributors={this.state.contributors} />
+						<Navbar
+							organizations={this.state.organizations}
+							newPACS={this.state.newPACS}
+							newCouncil={this.state.newCouncil}
+							office={this.state.office}
+							contributors={this.state.contributors}
+						/>
 						<MainContainer>
 							<Main>
 								<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />

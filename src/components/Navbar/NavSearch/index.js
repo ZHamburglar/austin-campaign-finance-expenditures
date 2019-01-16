@@ -10,7 +10,9 @@ class NavSearch extends Component {
 	}
 	static propTypes = {
 		office: PropTypes.array.isRequired,
-		contributors: PropTypes.array.isRequired
+		contributors: PropTypes.array.isRequired,
+		pacs: PropTypes.array.isRequired,
+		council: PropTypes.array.isRequired
 	};
 
 	componentWillMount() {
@@ -21,8 +23,10 @@ class NavSearch extends Component {
 	loadingResults() {
 		const offices = Object.assign({ name: 'offices', results: this.props.office }, {});
 		const contributors = Object.assign({ name: 'contributor', results: this.props.contributors }, {});
-		const searchObject = Object.assign({ office: offices, contributor: contributors });
-		console.log('search', searchObject)
+		const citycouncil = Object.assign({ name: 'Council', results: this.props.council }, {});
+		const PACS = Object.assign({ name: 'PACS', results: this.props.pacs }, {});
+		const searchObject = Object.assign({ Council: citycouncil, PAC: PACS, office: offices, contributor: contributors });
+		console.log('search', searchObject);
 		this.setState({
 			searchObject
 		});

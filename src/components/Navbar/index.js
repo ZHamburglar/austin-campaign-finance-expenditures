@@ -19,7 +19,9 @@ class Navbar extends Component {
 	static propTypes = {
 		organizations: PropTypes.array.isRequired,
 		office: PropTypes.array.isRequired,
-		contributors: PropTypes.array.isRequired
+		contributors: PropTypes.array.isRequired,
+		newPACS: PropTypes.array.isRequired,
+		newCouncil: PropTypes.array.isRequired,
 	};
 
 	state = {
@@ -86,18 +88,28 @@ class Navbar extends Component {
 						</Dropdown.Menu>
 					</Dropdown>
 					<Menu.Item>
-						<NavSearch office={this.props.office} contributors={this.props.contributors} />
+						<NavSearch
+							office={this.props.office}
+							contributors={this.props.contributors}
+							pacs={this.props.newPACS}
+							council={this.props.newCouncil}
+						/>
 					</Menu.Item>
-					<Menu.Item>
-						<DatesRangeInput
-							name="datesRange"
-							placeholder="From - To"
-							dateFormat="MM-DD-YYYY"
-							minDate="01-10-2016"
-							value={this.state.datesRange}
-							iconPosition="left"
-							onChange={this.handleChange} />
-					</Menu.Item>
+					<Dropdown item simple icon='filter'>
+						<Dropdown.Menu>
+							<Dropdown.Item>
+								<DatesRangeInput
+									name="datesRange"
+									placeholder="From - To"
+									dateFormat="MM-DD-YYYY"
+									minDate="01-10-2016"
+									value={this.state.datesRange}
+									iconPosition="left"
+									onChange={this.handleChange} />
+							</Dropdown.Item>
+						</Dropdown.Menu>
+
+					</Dropdown>
 					<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
 						Settings
 					</Menu.Item>
