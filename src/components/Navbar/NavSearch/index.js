@@ -1,6 +1,9 @@
 // Node Modules
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { push } from 'connected-react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Search } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -34,7 +37,11 @@ class NavSearch extends Component {
 
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-	handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+	handleResultSelect = (e, { result }) => {
+		console.log('pressed?', e, result, result.org)
+		this.setState({ value: result.title });
+		this.props.changePage(result.org, result.title);
+	}
 
 	handleSearchChange = (e, { value }) => {
 		this.setState({ isLoading: true, value });
@@ -81,4 +88,13 @@ class NavSearch extends Component {
 	}
 }
 
-export default NavSearch
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+	changePage: (org, entity) => push({
+		pathname: '/' + org + '/' + entity,
+		state: {
+			hello: "state value"
+		}
+	}),
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(NavSearch);

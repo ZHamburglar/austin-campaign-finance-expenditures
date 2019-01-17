@@ -73,17 +73,16 @@ class App extends Component {
 				const contributors = Array.from(individuals);
 				const office = Array.from(entities);
 				const newConts = contributors.map((row) => {
-					return { title: row };
+					return { title: row, org: "person" };
 				});
 				const newOrgs = office.map((row) => {
-					return { title: row };
+					return { title: row, org: "council" };
 				});
 				const newCouncil = organizations.Council.map((row) => {
-					return { title: row.filer_name };
+					return { title: row.filer_name, org: "council" };
 				});
-				console.log('newCouncil', newCouncil)
 				const newPACS = organizations.Organizations.map((row) => {
-					return { title: row.filer_name };
+					return { title: row.filer_name, org: "council" };
 				});
 				this.setState({
 					loading: false,
