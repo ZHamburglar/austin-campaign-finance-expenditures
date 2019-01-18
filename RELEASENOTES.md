@@ -2,6 +2,7 @@
 
 * Search bar now works with users and councils.
 * Navigation included on the dropdown selection.
+* Beginning construction of Person Page (name, #, $)
 
 ### 0.0.2
 

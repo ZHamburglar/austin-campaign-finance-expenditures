@@ -98,5 +98,13 @@ h1 {
 .halfContainer {
 	display: flex;
 	height: 50%;
+}
 
+.fill {
+	height: 100%;
+	color: black;
+}
+
+.standard {
+	font-size: 16px;
 }

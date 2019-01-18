@@ -33,7 +33,6 @@ class App extends Component {
 			.then((response) => {
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
-				// console.log(response.data)
 				let organizations = [];
 				let individuals = new Set(),
 					entities = new Set();
