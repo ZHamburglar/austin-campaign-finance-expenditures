@@ -75,9 +75,9 @@ class HomePresentation extends Component {
 		const {
 			contributions,
 			expenditures,
-			loans,
-			pledges,
-			credit,
+			// loans,
+			// pledges,
+			// credit,
 			council,
 			PACS,
 			individuals,

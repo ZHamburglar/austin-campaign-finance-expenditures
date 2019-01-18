@@ -35,9 +35,9 @@ class App extends Component {
 				let orgs = [];
 				// console.log(response.data)
 				let organizations = [];
-				let contributions = 0,
-					individuals = new Set(),
+				let individuals = new Set(),
 					entities = new Set();
+					// contributions = 0;
 				organizations.Council = [];
 				organizations.Organizations = [];
 				response.data.filter((item) => {

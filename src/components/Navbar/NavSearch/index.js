@@ -29,7 +29,6 @@ class NavSearch extends Component {
 		const citycouncil = Object.assign({ name: 'Council', results: this.props.council }, {});
 		const PACS = Object.assign({ name: 'PACS', results: this.props.pacs }, {});
 		const searchObject = Object.assign({ Council: citycouncil, PAC: PACS, office: offices, contributor: contributors });
-		console.log('search', searchObject);
 		this.setState({
 			searchObject
 		});
@@ -38,9 +37,8 @@ class NavSearch extends Component {
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
 	handleResultSelect = (e, { result }) => {
-		console.log('pressed?', e, result, result.org)
 		this.setState({ value: result.title });
-		this.props.changePage(result.org, result.title);
+		this.props.changepage(result.org, result.title);
 	}
 
 	handleSearchChange = (e, { value }) => {
@@ -48,7 +46,7 @@ class NavSearch extends Component {
 
 		setTimeout(() => {
 			if (this.state.value.length < 1) {
-				return this.resetComponent(); 
+				return this.resetComponent();
 			};
 			const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
 			const isMatch = (result) => re.test(result.title);
@@ -89,11 +87,8 @@ class NavSearch extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-	changePage: (org, entity) => push({
-		pathname: '/' + org + '/' + entity,
-		state: {
-			hello: "state value"
-		}
+	changepage: (org, entity) => push({
+		pathname: '/' + org + '/' + entity
 	}),
 }, dispatch);
 

@@ -38,6 +38,7 @@ class TopList extends Component {
 				return true;
 			} else if (transaction.entity === 'Entity' && entity === 'Organizations') {
 				contributors.push(transaction);
+				return true;
 			} else {
 				return false;
 			}

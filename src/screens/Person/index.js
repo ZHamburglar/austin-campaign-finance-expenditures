@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Person extends Component {
+	static propTypes = {
+		data: PropTypes.array.isRequired
+	};
+
 	render() {
 		return (
 			<div>
