@@ -8,7 +8,8 @@ class PersonPresentation extends Component {
 		data: PropTypes.array.isRequired,
 		person: PropTypes.string.isRequired,
 		contNum: PropTypes.number.isRequired,
-		contTotal: PropTypes.number.isRequired
+		contTotal: PropTypes.number.isRequired,
+		location: PropTypes.array.isRequired
 	};
 
 	componentDidMount() {
@@ -18,7 +19,8 @@ class PersonPresentation extends Component {
 		const {
 			person,
 			contNum,
-			contTotal
+			contTotal,
+			location
 		} = this.props;
 
 
@@ -30,6 +32,14 @@ class PersonPresentation extends Component {
 							<Segment>
 								{person}
 							</Segment>
+							<Segment.Group horizontal>
+								<Segment>
+									{location[0].city}
+								</Segment>
+								<Segment>
+									{location[0].zipcode}
+								</Segment>
+							</Segment.Group>
 							<Table>
 								<Table.Body className="standard">
 									<Table.Row>

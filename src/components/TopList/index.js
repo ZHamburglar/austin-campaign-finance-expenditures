@@ -105,7 +105,7 @@ class TopList extends Component {
 				);
 			}
 		}
-		return <Table.Body>{ contributionsList }</Table.Body>;
+		return <Table.Body className="standard">{ contributionsList }</Table.Body>;
 	}
 
 

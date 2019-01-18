@@ -95,7 +95,7 @@ class PieChart extends Component {
 		};
 
 		return (
-			<div style={{ color: 'black' }}>
+			<div style={{ color: 'black' }} className="fill">
 				<Segment.Group raised>
 					<Segment>
 						<p>Contribution Amount</p>

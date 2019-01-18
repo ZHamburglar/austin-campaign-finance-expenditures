@@ -127,7 +127,7 @@ class Council extends Component {
 						<div className="one-third column">
 							<PieChart data={this.state.filteredData} />
 						</div>
-						<div className="one-third column">
+						<div className="one-third column fill">
 							<PieChart data={this.state.filteredData} />
 						</div>
 					</div>

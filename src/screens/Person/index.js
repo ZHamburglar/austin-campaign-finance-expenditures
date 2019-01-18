@@ -10,7 +10,8 @@ class Person extends Component {
 		filteredData: null,
 		person: null,
 		contNum: null,
-		contTotal: null
+		contTotal: null,
+		location: null
 	};
 
 	static propTypes = {
@@ -25,11 +26,16 @@ class Person extends Component {
 		let number= 0,
 			total= 0;
 		const filteredData = [];
+		const location = [];
 		this.props.data.filter((transaction) => {
 			if (transaction.transactor_name === user) {
-				console.log('trans', transaction)
 				filteredData.push(transaction);
 				total = total + parseInt(transaction.transaction_amount, 10);
+				const locationSplit = transaction.transactor_city.split(', ');
+				const locationObj = Object.assign({});
+				locationObj.city = locationSplit[0] + ", " + locationSplit[1];
+				locationObj.zipcode = locationSplit[2];
+				location.push(locationObj);
 			}
 			return null;
 		});
@@ -40,7 +46,8 @@ class Person extends Component {
 			filteredData,
 			person: personjoin,
 			contNum: number,
-			contTotal: total
+			contTotal: total,
+			location
 		});
 	}
 
@@ -49,7 +56,8 @@ class Person extends Component {
 			filteredData,
 			person,
 			contNum,
-			contTotal
+			contTotal,
+			location
 		} = this.state;
 
 		if (filteredData) {
@@ -59,6 +67,7 @@ class Person extends Component {
 					person={person}
 					contNum={contNum}
 					contTotal={contTotal}
+					location={location}
 				/>
 			);
 		}

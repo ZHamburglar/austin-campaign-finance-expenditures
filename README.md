@@ -10,11 +10,6 @@ In order to run latest build on Github Pages:
 
 Then commit to the repo.
 
-## Material UI Components
-
-Linear Progress: https://material-ui.com/demos/progress/
-Dropdown Select: https://material-ui.com/demos/selects/
-
 ## Semantic UI Theming
 
 http://semantic-ui-forest.com/themes/
@@ -22,6 +17,7 @@ http://semantic-ui-forest.com/themes/
 ## Todo's
 * Decide CSS and Layout
 * Expenditures
+* Skeleton components while loading
 
 ### Structure
 * Add Contributors Route
@@ -33,7 +29,12 @@ http://semantic-ui-forest.com/themes/
 * Build last two panels
 * Add to Calendar Button for voting dates: https://jasonsalzman.github.io/react-add-to-calendar/
 
+### Council
+* Clicking on Contributor's name takes you to their page.
+
 ### Contributors
+* Indicate whether they are in city of Austin
+* Decide what to do with multiple locations
 
 ### Organizations
 * Users link to their corresponding Contributors Page

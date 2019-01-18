@@ -74,6 +74,7 @@ class NavSearch extends Component {
 
 		return (
 			<Search
+				className="searchDropdown"
 				category
 				loading={isLoading}
 				onResultSelect={this.handleResultSelect}

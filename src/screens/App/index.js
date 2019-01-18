@@ -29,7 +29,7 @@ class App extends Component {
 	}
 
 	getData() {
-		axios.get('https://data.austintexas.gov/resource/asyh-u6ja.json?$limit=9000')
+		axios.get('https://data.austintexas.gov/resource/asyh-u6ja.json?$limit=10000')
 			.then((response) => {
 				// Create new Organization array based on Unique Orgs
 				let orgs = [];
