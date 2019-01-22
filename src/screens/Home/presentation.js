@@ -137,16 +137,9 @@ class HomePresentation extends Component {
 							</Metric>
 						</Number>
 					</Column>
-
-
-					
 					<Column>
-						<InfoContainer>
-							<Info>
-								<div>Add</div>
-								<div>Something</div>
-								<div>Here</div>
-							</Info>
+						<InfoContainer class="standard">
+							<iframe title="COA Live Stream" src="http://media.swagit.com/austintx/atxn1/" left="100" width="540" height="450"></iframe>
 						</InfoContainer>
 					</Column>
 				</Row>

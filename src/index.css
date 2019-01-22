@@ -109,6 +109,10 @@ h1 {
 	font-size: 16px;
 }
 
+.standardwidth {
+	overflow: hidden;
+}
+
 .searchdropdown {
 	height: 500;
 	overflow: scroll;
