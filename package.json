@@ -15,6 +15,12 @@
 	"eslintConfig": {
 		"extends": "react-app"
 	},
+	"jest": {
+    	"collectCoverageFrom": [
+      		"src/**/*.js",
+      		"!src/index.js"
+    	]
+  	},
 	"devDependencies": {
 		"enzyme": "^3.8.0",
 		"enzyme-adapter-react-16": "^1.7.1",
