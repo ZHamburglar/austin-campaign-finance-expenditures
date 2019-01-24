@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Iframe from 'react-iframe';
 
 // Local Components
 import VotingButton from '../../components/Buttons/VotingButton';
@@ -139,7 +140,14 @@ class HomePresentation extends Component {
 					</Column>
 					<Column>
 						<InfoContainer class="standard">
-							<iframe title="COA Live Stream" src="http://media.swagit.com/austintx/atxn1/" left="100" width="540" height="450"></iframe>
+							{/* Change the iframe to take up 100% with text out of frame */}
+							<Iframe url="http://media.swagit.com/austintx/atxn1/"
+								width="100%"
+								height="100%"
+								display="initial"
+								position="relative"
+								allowFullScreen
+							/>
 						</InfoContainer>
 					</Column>
 				</Row>
