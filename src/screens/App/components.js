@@ -18,4 +18,12 @@ export const Main = styled.div`
     background-color: rgba(66,87,102, .95);
 	height: 95%;
     width: 95%;
+
+	@media (max-width: 1000px) {
+    	width: 98%;
+	}
+
+	@media (max-width: 800px) {
+    	width: 100%;
+	}
 `;
