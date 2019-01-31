@@ -7,6 +7,7 @@ import Iframe from 'react-iframe';
 
 // Local Components
 import VotingButton from '../../components/Buttons/VotingButton';
+import HomeTopContributors from '../../components/HomeTopContributors';
 import {
 	Row,
 	Column,
@@ -218,9 +219,7 @@ class HomePresentation extends Component {
 					<Column>
 						<InfoContainer>
 							<Info>
-								<div>Add</div>
-								<div>Something</div>
-								<div>Here</div>
+								<HomeTopContributors />
 							</Info>
 						</InfoContainer>
 					</Column>

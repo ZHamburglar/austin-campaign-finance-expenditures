@@ -60,6 +60,10 @@ class TopList extends Component {
 		});
 	}
 
+	roundTransaction(amount) {
+		return parseInt(amount, 10).toFixed(2);
+	}
+
 	createContributionList () {
 		const { pageSize } = this.state;
 		let x;
@@ -81,7 +85,7 @@ class TopList extends Component {
 		} else if (this.state.activePage === this.state.pages) {
 			let j = x - i;
 			for (i; i < x; i++) {
-				let roundTransaction = parseInt(this.state.topContributors[i].transaction_amount, 10).toFixed(2);
+				let roundTransaction = this.roundTransaction(this.state.topContributors[i].transaction_amount);
 				contributionsList.push(
 					<Table.Row key={i}>
 						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
@@ -99,7 +103,7 @@ class TopList extends Component {
 			}
 		} else {
 			for (i; i < x; i++) {
-				let roundTransaction = parseInt(this.state.topContributors[i].transaction_amount, 10).toFixed(2);
+				let roundTransaction = this.roundTransaction(this.state.topContributors[i].transaction_amount);
 				contributionsList.push(
 					<Table.Row key={i}>
 						<Table.Cell onClick={() => console.log('Clicked:')}>{this.state.topContributors[i].transactor_name}</Table.Cell>
