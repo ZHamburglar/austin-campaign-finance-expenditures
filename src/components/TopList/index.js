@@ -1,5 +1,8 @@
 // Node Modules
 import React, { Component } from 'react';
+import { push } from 'connected-react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Segment, Pagination, Table } from 'semantic-ui-react';
 
@@ -99,7 +102,7 @@ class TopList extends Component {
 				let roundTransaction = parseInt(this.state.topContributors[i].transaction_amount, 10).toFixed(2);
 				contributionsList.push(
 					<Table.Row key={i}>
-						<Table.Cell>{this.state.topContributors[i].transactor_name}</Table.Cell>
+						<Table.Cell onClick={() => console.log('Clicked:')}>{this.state.topContributors[i].transactor_name}</Table.Cell>
 						<Table.Cell textAlign='right'>${roundTransaction}</Table.Cell>
 					</Table.Row>
 				);
@@ -162,4 +165,10 @@ class TopList extends Component {
 	}
 }
 
-export default TopList;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+	changepage: (org, entity) => push({
+		pathname: '/' + org + '/' + entity
+	}),
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(TopList);
