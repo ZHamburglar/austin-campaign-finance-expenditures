@@ -4,6 +4,7 @@ import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Iframe from 'react-iframe';
+import { Statistic } from 'semantic-ui-react';
 
 // Local Components
 import VotingButton from '../../components/Buttons/VotingButton';
@@ -96,7 +97,31 @@ class HomePresentation extends Component {
 			<>
 				<Row>
 					<Column>
-						<Number>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={individuals}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>Individuals</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={entities}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>Entities</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						{/* <Number>
 							<CountUp
 								end={individuals}
 								delay={.3}
@@ -115,116 +140,81 @@ class HomePresentation extends Component {
 							<Metric>
 								Entities
 							</Metric>
-						</Number>
+						</Number> */}
 					</Column>
 					<Column>
-						<Number>
-							<CountUp
-								end={council}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Council
-							</Metric>
-						</Number>
-						<Number>
-							<CountUp
-								end={PACS}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								PACS
-							</Metric>
-						</Number>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={council}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>Council</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={PACS}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>PACS</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
 					</Column>
 					<Column>
-						<InfoContainer class="standard">
-							{/* Change the iframe to take up 100% with text out of frame */}
-							<Iframe url="http://media.swagit.com/austintx/atxn1/"
-								width="100%"
-								height="100%"
-								display="initial"
-								position="relative"
-								allowFullScreen
-							/>
-						</InfoContainer>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={expenditures}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>Expenditures</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>
+									<CountUp
+										end={contributions}
+										delay={.3}
+										duration={2.75}
+									/>
+								</Statistic.Value>
+								<Statistic.Label>Contributions</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
 					</Column>
 				</Row>
 				<Row>
 					<Column>
-						<MetricContainer>
-							<Number>
-								<CountUp
-									end={expenditures}
-									delay={.3}
-									duration={2.75}
-								/>
-								<Metric>
-									Expenditures
-								</Metric>
-							</Number>
-						</MetricContainer>
-						<MetricContainer>
-							<Number>
-								<CountUp
-									end={contributions}
-									delay={.3}
-									duration={2.75}
-								/>
-								<Metric>
-									Contributions
-								</Metric>
-							</Number>
-						</MetricContainer>
-
-						{/* <MetricContainer>
-							<Number>
-								<CountUp
-									end={loans}
-									delay={.3}
-									duration={2.75}
-								/>
-								<Metric>
-									Loans
-								</Metric>
-							</Number>
-						</MetricContainer>
-						<MetricContainer>
-							<Number>
-								<CountUp
-									end={pledges}
-									delay={.3}
-									duration={2.75}
-								/>
-								<Metric>
-									Pledges
-								</Metric>
-							</Number>
-						</MetricContainer>
-						<MetricContainer>
-							<Number>
-								<CountUp
-									end={credit}
-									delay={.3}
-									duration={2.75}
-								/>
-								<Metric>
-									Credit
-								</Metric>
-							</Number>
-						</MetricContainer> */}
-					</Column>
-					<Column>
-						<InfoContainer>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>22</Statistic.Value>
+								<Statistic.Label>Faves</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						<Statistic.Group>
+							<Statistic>
+								<Statistic.Value>22</Statistic.Value>
+								<Statistic.Label>Faves</Statistic.Label>
+							</Statistic>
+						</Statistic.Group>
+						{/* <InfoContainer>
 							<Info>
 								<HomeTopContributors />
 							</Info>
-						</InfoContainer>
+						</InfoContainer> */}
 					</Column>
-
-
 					<Column>
 						<div>
 							<Number>
@@ -246,6 +236,18 @@ class HomePresentation extends Component {
 							<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
 						</div>
 						<VotingButton name='kevin' />
+					</Column>
+					<Column>
+						<InfoContainer class="standard">
+							{/* Change the iframe to take up 100% with text out of frame */}
+							<Iframe url="http://media.swagit.com/austintx/atxn1/"
+								width="100%"
+								height="100%"
+								display="initial"
+								position="relative"
+								allowFullScreen
+							/>
+						</InfoContainer>
 					</Column>
 				</Row>
 			</>

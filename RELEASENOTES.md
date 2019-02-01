@@ -1,3 +1,7 @@
+### 0.0.4
+
+* Long overdue rework for mobile experience.
+
 ### 0.0.3
 
 * Search bar now works with users and councils.

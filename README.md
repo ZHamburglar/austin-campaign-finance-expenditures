@@ -18,15 +18,23 @@ http://semantic-ui-forest.com/themes/
 * Decide CSS and Layout
 * Expenditures
 * Skeleton components while loading
+* Switch to plotly from chart.js? https://plot.ly/javascript/react/
+
+### CSS General
+* Mobile friendliness
+* Media Breakpoints 
 
 ### Structure
 * Add Contributors Route
 
 ### NavBar
 * Search Input for Users
+* Change mobile interaction when width is changed.
+* Sidebar for responsiveness. (https://codesandbox.io/s/325y47xk36)
 
 ### Home
 * Build last two panels
+* Semantic UI statistics
 * Add to Calendar Button for voting dates: https://jasonsalzman.github.io/react-add-to-calendar/
 
 ### Council

@@ -1,11 +1,17 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from "lodash";
 import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import {
+	Container,
+	Icon,
+	Image,
+	Sidebar,
+	Responsive,
 	Dropdown,
 	Menu,
 } from 'semantic-ui-react';
@@ -28,7 +34,8 @@ class Navbar extends Component {
 		loading: true,
 		searchinput: '',
 		selectedOrganization: '',
-		datesRange: ''
+		datesRange: '',
+		visible: false
 	}
 
 	handleSearchChange = (e) => {
@@ -55,65 +62,121 @@ class Navbar extends Component {
 		this.props.changeFilterDate({ dates });
 	}
 
+	handlePusher = () => {
+		const { visible } = this.state;
+		if (visible) {
+			this.setState({ visible: false });
+		}
+	};
+
+	handleToggle = () => this.setState({ visible: !this.state.visible });
+
 	render() {
+		const { children, leftItems, rightItems } = this.props;
+		const { visible } = this.state;
 		return (
 			<>
-				<Menu fixed="top" borderless inverted className="Navbar">
-					<Menu.Item as='a' header>
-						Austin Political Tracker
-					</Menu.Item>
-					<Menu.Item as='a' onClick={this.props.changeHomePage}>
-						Home
-					</Menu.Item>
-					<Dropdown item simple text='Council/PACS'>
-						<Dropdown.Menu>
-							<Dropdown.Item>
-								<i className='dropdown icon' />
-								<span className='text'>Office Holders</span>
-								<Dropdown.Menu>
-									{this.props.organizations.Council.map((member) => {
-										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-									})}
-								</Dropdown.Menu>
-							</Dropdown.Item>
-							<Dropdown.Item>
-								<i className='dropdown icon' />
-								<span className='text'>PACS</span>
-								<Dropdown.Menu>
-									{this.props.organizations.Organizations.map((member) => {
-										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-									})}
-								</Dropdown.Menu>
-							</Dropdown.Item>
-						</Dropdown.Menu>
-					</Dropdown>
-					<Menu.Item>
-						<NavSearch
-							office={this.props.office}
-							contributors={this.props.contributors}
-							pacs={this.props.newPACS}
-							council={this.props.newCouncil}
-						/>
-					</Menu.Item>
-					<Dropdown item simple icon='filter'>
-						<Dropdown.Menu>
-							<Dropdown.Item>
-								<DatesRangeInput
-									name="datesRange"
-									placeholder="From - To"
-									dateFormat="MM-DD-YYYY"
-									minDate="01-10-2016"
-									value={this.state.datesRange}
-									iconPosition="left"
-									onChange={this.handleChange} />
-							</Dropdown.Item>
-						</Dropdown.Menu>
+				<Responsive {...Responsive.onlyMobile}>
+					<Sidebar.Pushable>
+						<Sidebar
+							as={Menu}
+							animation="overlay"
+							icon="labeled"
+							inverted
+							vertical
+							visible={visible}
+						>
+							<Menu.Item as='a'>
+								<Icon name='home' />
+									Home
+							</Menu.Item>
+							<Menu.Item as='a'>
+								<Icon name='gamepad' />
+								Games
+							</Menu.Item>
+							<Menu.Item as='a'>
+								<Icon name='camera' />
+								Channels
+							</Menu.Item>
+						</Sidebar>
+						<Sidebar.Pusher
+							dimmed={visible}
+							onClick={this.handlePusher}
+							style={{ minHeight: "100vh" }}
+						>
+							<Menu fixed="top" inverted>
+								<Menu.Item onClick={this.handleToggle}>
+									<Icon name="sidebar" />
+								</Menu.Item>
+								<Menu.Item as='a' header>
+											Austin Political Tracker
+								</Menu.Item>
+								<Menu.Menu position="right">
+									{_.map(rightItems, item => <Menu.Item {...item} />)}
+								</Menu.Menu>
+							</Menu>
+						</Sidebar.Pusher>
+					</Sidebar.Pushable>
+				</Responsive>
 
-					</Dropdown>
-					<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
-						Settings
-					</Menu.Item>
-				</Menu>
+				<Responsive minWidth={Responsive.onlyTablet.minWidth}>
+					<Menu fixed="top" borderless inverted className="Navbar">
+						<Menu.Item as='a' header>
+							Austin Political Tracker
+						</Menu.Item>
+						<Menu.Item as='a' onClick={this.props.changeHomePage}>
+							Home
+						</Menu.Item>
+						<Dropdown item simple text='Council/PACS'>
+							<Dropdown.Menu>
+								<Dropdown.Item>
+									<i className='dropdown icon' />
+									<span className='text'>Office Holders</span>
+									<Dropdown.Menu>
+										{this.props.organizations.Council.map((member) => {
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+										})}
+									</Dropdown.Menu>
+								</Dropdown.Item>
+								<Dropdown.Item>
+									<i className='dropdown icon' />
+									<span className='text'>PACS</span>
+									<Dropdown.Menu>
+										{this.props.organizations.Organizations.map((member) => {
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+										})}
+									</Dropdown.Menu>
+								</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+						<Menu.Item>
+							<NavSearch
+								office={this.props.office}
+								contributors={this.props.contributors}
+								pacs={this.props.newPACS}
+								council={this.props.newCouncil}
+							/>
+						</Menu.Item>
+						<Dropdown item simple icon='filter'>
+							<Dropdown.Menu>
+								<Dropdown.Item>
+									<DatesRangeInput
+										name="datesRange"
+										placeholder="From - To"
+										dateFormat="MM-DD-YYYY"
+										minDate="01-10-2016"
+										value={this.state.datesRange}
+										iconPosition="left"
+										onChange={this.handleChange} />
+								</Dropdown.Item>
+							</Dropdown.Menu>
+
+						</Dropdown>
+						<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
+							Settings
+						</Menu.Item>
+					</Menu>
+				</Responsive>
 			</>
 		);
 
