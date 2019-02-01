@@ -1,15 +1,12 @@
 // Node Modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from "lodash";
 import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import {
-	Container,
 	Icon,
-	Image,
 	Sidebar,
 	Responsive,
 	Dropdown,
@@ -72,7 +69,6 @@ class Navbar extends Component {
 	handleToggle = () => this.setState({ visible: !this.state.visible });
 
 	render() {
-		const { children, leftItems, rightItems } = this.props;
 		const { visible } = this.state;
 		return (
 			<>
@@ -85,24 +81,62 @@ class Navbar extends Component {
 							inverted
 							vertical
 							visible={visible}
+							style={{ overflow: 'visible' }}
 						>
-							<Menu.Item as='a'>
+							<Menu.Item as='a' onClick={this.props.changeHomePage}>
 								<Icon name='home' />
-									Home
+								Home
 							</Menu.Item>
-							<Menu.Item as='a'>
-								<Icon name='gamepad' />
-								Games
+							<Dropdown item simple text='Council/PACS'>
+								<Dropdown.Menu>
+									<Dropdown.Item>
+										<i className='dropdown icon' />
+										<span className='text'>Office Holders</span>
+										<Dropdown.Menu>
+											{this.props.organizations.Council.map((member) => {
+												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+											})}
+										</Dropdown.Menu>
+									</Dropdown.Item>
+									<Dropdown.Item>
+										<i className='dropdown icon' />
+										<span className='text'>PACS</span>
+										<Dropdown.Menu>
+											{this.props.organizations.Organizations.map((member) => {
+												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+											})}
+										</Dropdown.Menu>
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+							<Menu.Item>
+								<NavSearch
+									office={this.props.office}
+									contributors={this.props.contributors}
+									pacs={this.props.newPACS}
+									council={this.props.newCouncil}
+								/>
 							</Menu.Item>
-							<Menu.Item as='a'>
-								<Icon name='camera' />
-								Channels
-							</Menu.Item>
+							<Dropdown item simple icon='filter'>
+								<Dropdown.Menu>
+									<Dropdown.Item>
+										<DatesRangeInput
+											name="datesRange"
+											placeholder="From - To"
+											dateFormat="MM-DD-YYYY"
+											minDate="01-10-2016"
+											value={this.state.datesRange}
+											iconPosition="left"
+											onChange={this.handleChange} />
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
 						</Sidebar>
 						<Sidebar.Pusher
 							dimmed={visible}
 							onClick={this.handlePusher}
-							style={{ minHeight: "100vh" }}
+							style={{ minHeight: "100vh", overflow: "visible" }}
+
 						>
 							<Menu fixed="top" inverted>
 								<Menu.Item onClick={this.handleToggle}>
@@ -111,9 +145,9 @@ class Navbar extends Component {
 								<Menu.Item as='a' header>
 											Austin Political Tracker
 								</Menu.Item>
-								<Menu.Menu position="right">
-									{_.map(rightItems, item => <Menu.Item {...item} />)}
-								</Menu.Menu>
+								<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
+									<Icon name="cog" />
+								</Menu.Item>
 							</Menu>
 						</Sidebar.Pusher>
 					</Sidebar.Pushable>
@@ -173,6 +207,7 @@ class Navbar extends Component {
 
 						</Dropdown>
 						<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
+							<Icon name="cog" />
 							Settings
 						</Menu.Item>
 					</Menu>

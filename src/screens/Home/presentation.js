@@ -217,18 +217,16 @@ class HomePresentation extends Component {
 					</Column>
 					<Column>
 						<div>
-							<Number>
-								{months}
-								<Metric>
-									{monthsString}
-								</Metric>
-							</Number>
-							<Number>
-								{days}
-								<Metric>
-									{daysString}
-								</Metric>
-							</Number>
+							<Statistic.Group>
+								<Statistic>
+									<Statistic.Value>{months}</Statistic.Value>
+									<Statistic.Label>{monthsString}</Statistic.Label>
+								</Statistic>
+								<Statistic>
+									<Statistic.Value>{days}</Statistic.Value>
+									<Statistic.Label>{daysString}</Statistic.Label>
+								</Statistic>
+							</Statistic.Group>
 							<br />
 							until the next election.
 						</div>
