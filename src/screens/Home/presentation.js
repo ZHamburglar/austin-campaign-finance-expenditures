@@ -100,11 +100,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={individuals}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={individuals}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>Individuals</Statistic.Label>
 							</Statistic>
@@ -112,11 +114,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={entities}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={entities}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>Entities</Statistic.Label>
 							</Statistic>
@@ -146,11 +150,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={council}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={council}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>Council</Statistic.Label>
 							</Statistic>
@@ -158,11 +164,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={PACS}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={PACS}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>PACS</Statistic.Label>
 							</Statistic>
@@ -172,11 +180,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={expenditures}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={expenditures}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>Expenditures</Statistic.Label>
 							</Statistic>
@@ -184,11 +194,13 @@ class HomePresentation extends Component {
 						<Statistic.Group>
 							<Statistic>
 								<Statistic.Value>
-									<CountUp
-										end={contributions}
-										delay={.3}
-										duration={2.75}
-									/>
+									<Number>
+										<CountUp
+											end={contributions}
+											delay={.3}
+											duration={2.75}
+										/>
+									</Number>
 								</Statistic.Value>
 								<Statistic.Label>Contributions</Statistic.Label>
 							</Statistic>

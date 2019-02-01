@@ -58,7 +58,6 @@ class UpdateModal extends Component {
 		if (this.state.notes) {
 			return (
 				<>
-					{/* <Button onClick={this.show}>Blurring</Button> */}
 					<Modal dimmer='blurring' open={open} onClose={this.props.changeModal}>
 						<Modal.Header>Update Notes</Modal.Header>
 						<Modal.Content>

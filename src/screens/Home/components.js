@@ -31,7 +31,6 @@ export const Info = styled.div`
 `;
 
 export const Number = styled.div`
-	font-size: 250%;
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 `;

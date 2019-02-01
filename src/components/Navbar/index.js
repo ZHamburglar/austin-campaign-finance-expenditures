@@ -76,39 +76,35 @@ class Navbar extends Component {
 					<Sidebar.Pushable>
 						<Sidebar
 							as={Menu}
-							animation="overlay"
+							animation='overlay'
 							icon="labeled"
 							inverted
 							vertical
 							visible={visible}
-							style={{ overflow: 'visible' }}
+							style={{ overflow: 'hidden' }}
 						>
 							<Menu.Item as='a' onClick={this.props.changeHomePage}>
 								<Icon name='home' />
 								Home
 							</Menu.Item>
-							<Dropdown item simple text='Council/PACS'>
-								<Dropdown.Menu>
-									<Dropdown.Item>
-										<i className='dropdown icon' />
-										<span className='text'>Office Holders</span>
-										<Dropdown.Menu>
-											{this.props.organizations.Council.map((member) => {
-												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-											})}
-										</Dropdown.Menu>
-									</Dropdown.Item>
-									<Dropdown.Item>
-										<i className='dropdown icon' />
-										<span className='text'>PACS</span>
-										<Dropdown.Menu>
-											{this.props.organizations.Organizations.map((member) => {
-												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-											})}
-										</Dropdown.Menu>
-									</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
+							<Menu.Item>
+								<Dropdown simple inline floating text='Office Holders' icon='caret right'>
+									<Dropdown.Menu overlay>
+										{this.props.organizations.Council.map((member) => {
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+										})}
+									</Dropdown.Menu>
+								</Dropdown>
+							</Menu.Item>
+							<Menu.Item>
+								<Dropdown simple inline floating text='PACS' icon='caret right'>
+									<Dropdown.Menu>
+										{this.props.organizations.Organizations.map((member) => {
+											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+										})}
+									</Dropdown.Menu>
+								</Dropdown>
+							</Menu.Item>
 							<Menu.Item>
 								<NavSearch
 									office={this.props.office}
@@ -135,7 +131,7 @@ class Navbar extends Component {
 						<Sidebar.Pusher
 							dimmed={visible}
 							onClick={this.handlePusher}
-							style={{ minHeight: "100vh", overflow: "visible" }}
+							style={{ minHeight: "100vh" }}
 
 						>
 							<Menu fixed="top" inverted>
