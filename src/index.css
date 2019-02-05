@@ -20,19 +20,11 @@ code {
     background-image : url('./assets/images/coadowntown.jpg');
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     font-family: "Roboto";
     height: 100vh;
     width: 100%;
 }
-
-.navCalendar {
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .row {
 	position: relative;

@@ -11,7 +11,11 @@ import Council from '../Council';
 import Person from '../Person';
 import Loading from '../../components/Loading';
 import Navbar from '../../components/Navbar';
-import { MainContainer, Main } from './components';
+import {
+	AppContainer,
+	MainContainer,
+	Main
+} from './components';
 
 class App extends Component {
 	state = {
@@ -109,23 +113,23 @@ class App extends Component {
 
 		if (this.state.data) {
 			return (
-				<>
-						<Navbar
-							organizations={this.state.organizations}
-							newPACS={this.state.newPACS}
-							newCouncil={this.state.newCouncil}
-							office={this.state.office}
-							contributors={this.state.contributors}
-						/>
-						<MainContainer>
-							<Main>
-								<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />
-								<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
-								<Route exact path='/person/:user' component={withTracker((props) => <Person {...props} data={this.state.data} />)} />
-								<Route exact path='/settings' component={withTracker(Settings)} />
-							</Main>
-						</MainContainer>
-				</>
+				<AppContainer>
+					<Navbar
+						organizations={this.state.organizations}
+						newPACS={this.state.newPACS}
+						newCouncil={this.state.newCouncil}
+						office={this.state.office}
+						contributors={this.state.contributors}
+					/>
+					<MainContainer>
+						<Main>
+							<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />
+							<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
+							<Route exact path='/person/:user' component={withTracker((props) => <Person {...props} data={this.state.data} />)} />
+							<Route exact path='/settings' component={withTracker(Settings)} />
+						</Main>
+					</MainContainer>
+				</AppContainer>
 			);
 		}
 

@@ -162,7 +162,7 @@ class Navbar extends Component {
 								<Dropdown.Item>
 									<i className='dropdown icon' />
 									<span className='text'>Office Holders</span>
-									<Dropdown.Menu>
+									<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
 										{this.props.organizations.Council.map((member) => {
 											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
 										})}
@@ -171,7 +171,7 @@ class Navbar extends Component {
 								<Dropdown.Item>
 									<i className='dropdown icon' />
 									<span className='text'>PACS</span>
-									<Dropdown.Menu>
+									<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
 										{this.props.organizations.Organizations.map((member) => {
 											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
 										})}
