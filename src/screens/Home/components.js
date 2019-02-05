@@ -14,7 +14,7 @@ export const Column = styled.div`
 	align-items: center;
 	flex-direction: column;
 	color: blue;
-	width: calc(100% / 3);
+	width: calc(100%);
 `;
 
 export const InfoContainer = styled.div`
@@ -35,9 +35,10 @@ export const Number = styled.div`
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 `;
 
+
 export const Metric = styled.span`
-	font-size: 50%;
-	color: grey;
+	color: black;
+	text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
 `;
 
 export const VoterButton = styled.a`

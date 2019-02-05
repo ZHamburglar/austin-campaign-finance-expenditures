@@ -26,10 +26,6 @@ code {
     width: 100%;
 }
 
-.Navbar {
-	height: 5%;
-}
-
 .navCalendar {
 	display: flex;
     flex-direction: column;

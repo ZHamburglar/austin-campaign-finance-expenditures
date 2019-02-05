@@ -4,7 +4,11 @@ import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Iframe from 'react-iframe';
-import { Statistic } from 'semantic-ui-react';
+import {
+	Statistic,
+	Grid,
+	Segment 
+} from 'semantic-ui-react';
 
 // Local Components
 import VotingButton from '../../components/Buttons/VotingButton';
@@ -95,171 +99,224 @@ class HomePresentation extends Component {
 
 		return (
 			<>
-				<Row>
-					<Column>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={individuals}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>Individuals</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={entities}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>Entities</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						{/* <Number>
-							<CountUp
-								end={individuals}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Individuals
-							</Metric>
-						</Number>
-						<Number>
-							<CountUp
-								end={entities}
-								delay={.3}
-								duration={2.75}
-							/>
-							<Metric>
-								Entities
-							</Metric>
-						</Number> */}
-					</Column>
-					<Column>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={council}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>Council</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={PACS}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>PACS</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-					</Column>
-					<Column>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={expenditures}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>Expenditures</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>
-									<Number>
-										<CountUp
-											end={contributions}
-											delay={.3}
-											duration={2.75}
-										/>
-									</Number>
-								</Statistic.Value>
-								<Statistic.Label>Contributions</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-					</Column>
-				</Row>
-				<Row>
-					<Column>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>22</Statistic.Value>
-								<Statistic.Label>Faves</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						<Statistic.Group>
-							<Statistic>
-								<Statistic.Value>22</Statistic.Value>
-								<Statistic.Label>Faves</Statistic.Label>
-							</Statistic>
-						</Statistic.Group>
-						{/* <InfoContainer>
-							<Info>
-								<HomeTopContributors />
-							</Info>
-						</InfoContainer> */}
-					</Column>
-					<Column>
-						<div>
-							<Statistic.Group>
-								<Statistic>
-									<Statistic.Value>{months}</Statistic.Value>
-									<Statistic.Label>{monthsString}</Statistic.Label>
-								</Statistic>
-								<Statistic>
-									<Statistic.Value>{days}</Statistic.Value>
-									<Statistic.Label>{daysString}</Statistic.Label>
-								</Statistic>
-							</Statistic.Group>
-							<br />
-							until the next election.
-						</div>
-						<div>
-							<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
-						</div>
-						<VotingButton name='kevin' />
-					</Column>
-					<Column>
-						<InfoContainer class="standard">
-							{/* Change the iframe to take up 100% with text out of frame */}
-							<Iframe url="http://media.swagit.com/austintx/atxn1/"
-								width="100%"
-								height="100%"
-								display="initial"
-								position="relative"
-								allowFullScreen
-							/>
-						</InfoContainer>
-					</Column>
-				</Row>
+				<Grid style={{ height: '100%' }}>
+					<Grid.Row style={{ height: '50%' }}>
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={individuals}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Individuals
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={entities}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Entities
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+							</Column>
+						</Grid.Column>
+
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={council}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Council
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={PACS}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												PACS
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+							</Column>
+						</Grid.Column>
+
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={expenditures}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Expenditures
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												<CountUp
+													end={contributions}
+													delay={.3}
+													duration={2.75}
+												/>
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Contributions
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+							</Column>
+						</Grid.Column>
+					</Grid.Row>
+
+					<Grid.Row style={{ height: '50%' }}>
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												22
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Faves
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												22
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Faves
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								{/* <InfoContainer>
+									<Info>
+										<HomeTopContributors />
+									</Info>
+								</InfoContainer> */}
+							</Column>
+						</Grid.Column>
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<div>
+									<Statistic.Group>
+										<Statistic>
+											<Statistic.Value>
+												<Number>
+													{months}
+												</Number>
+											</Statistic.Value>
+											<Statistic.Label>
+												<Metric>
+													{monthsString}
+												</Metric>
+											</Statistic.Label>
+										</Statistic>
+										<Statistic>
+											<Statistic.Value>
+												<Number>
+													{days}
+												</Number>
+											</Statistic.Value>
+											<Statistic.Label>
+												<Metric>
+													{daysString}
+												</Metric>
+											</Statistic.Label>
+										</Statistic>
+									</Statistic.Group>
+									<br />
+									until the next election.
+								</div>
+								<div>
+									<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
+								</div>
+								<VotingButton name='kevin' />
+							</Column>
+						</Grid.Column>
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<InfoContainer class="standard">
+									{/* Change the iframe to take up 100% with text out of frame */}
+									<Iframe url="http://media.swagit.com/austintx/atxn1/"
+										width="100%"
+										height="100%"
+										display="initial"
+										position="relative"
+										allowFullScreen
+									/>
+								</InfoContainer>
+							</Column>
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
 			</>
 		);
 	};

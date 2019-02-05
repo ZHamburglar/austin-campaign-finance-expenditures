@@ -12,6 +12,11 @@ export const MainContainer = styled.div`
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+
+	@media (min-width : 768px) {
+		position: relative;
+		height: 100%;
+	}
 `;
 
 export const Main = styled.div`
@@ -23,7 +28,7 @@ export const Main = styled.div`
     	width: 98%;
 	}
 
-	@media (max-width: 800px) {
+	@media (max-width:768px) {
     	width: 100%;
 	}
 `;
