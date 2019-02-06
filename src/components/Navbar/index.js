@@ -92,7 +92,7 @@ class Navbar extends Component {
 								<Popup
 									on='click'
 									position={'right center'}
-									trigger={<div><Icon name='home' />Council</div>}
+									trigger={<div>Council</div>}
 									content={
 										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute', zIndex: '999999 !important' }}>
 											{this.props.organizations.Council.map((member) => {
@@ -106,7 +106,7 @@ class Navbar extends Component {
 								<Popup
 									on='click'
 									position={'right center'}
-									trigger={<div><Icon name='home' />PACS</div>}
+									trigger={<div>PACS</div>}
 									content={
 										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute', zIndex: '999999 !important' }}>
 											{this.props.organizations.Organizations.map((member) => {

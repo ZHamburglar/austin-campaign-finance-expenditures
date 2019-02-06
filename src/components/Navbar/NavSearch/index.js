@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Search } from 'semantic-ui-react';
+import {
+	Search,
+	Popup
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class NavSearch extends Component {
