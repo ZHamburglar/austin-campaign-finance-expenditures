@@ -11,6 +11,7 @@ import {
 	Responsive,
 	Dropdown,
 	Menu,
+	Popup
 } from 'semantic-ui-react';
 import { DatesRangeInput } from 'semantic-ui-calendar-react';
 
@@ -77,7 +78,7 @@ class Navbar extends Component {
 						<Sidebar
 							as={Menu}
 							animation='overlay'
-							icon="labeled"
+							icon='labeled'
 							inverted
 							vertical
 							visible={visible}
@@ -88,22 +89,32 @@ class Navbar extends Component {
 								Home
 							</Menu.Item>
 							<Menu.Item>
-								<Dropdown simple inline floating text='Office Holders' icon='caret right'>
-									<Dropdown.Menu overlay>
-										{this.props.organizations.Council.map((member) => {
-											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-										})}
-									</Dropdown.Menu>
-								</Dropdown>
+								<Popup
+									on='click'
+									position={'right center'}
+									trigger={<div><Icon name='home' />Council</div>}
+									content={
+										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute', zIndex: '999999 !important' }}>
+											{this.props.organizations.Council.map((member) => {
+												return <Menu.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Menu.Item>;
+											})}
+										</Menu>
+									}>
+								</Popup>
 							</Menu.Item>
 							<Menu.Item>
-								<Dropdown simple inline floating text='PACS' icon='caret right'>
-									<Dropdown.Menu>
-										{this.props.organizations.Organizations.map((member) => {
-											return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-										})}
-									</Dropdown.Menu>
-								</Dropdown>
+								<Popup
+									on='click'
+									position={'right center'}
+									trigger={<div><Icon name='home' />PACS</div>}
+									content={
+										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute', zIndex: '999999 !important' }}>
+											{this.props.organizations.Organizations.map((member) => {
+												return <Menu.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Menu.Item>;
+											})}
+										</Menu>
+									}>
+								</Popup>
 							</Menu.Item>
 							<Menu.Item>
 								<NavSearch
@@ -113,9 +124,12 @@ class Navbar extends Component {
 									council={this.props.newCouncil}
 								/>
 							</Menu.Item>
-							<Dropdown item simple icon='filter'>
-								<Dropdown.Menu>
-									<Dropdown.Item>
+							<Menu.Item>
+								<Popup
+									on='click'
+									position={'right center'}
+									trigger={<Icon name='filter' />}
+									content={
 										<DatesRangeInput
 											name="datesRange"
 											placeholder="From - To"
@@ -124,9 +138,9 @@ class Navbar extends Component {
 											value={this.state.datesRange}
 											iconPosition="left"
 											onChange={this.handleChange} />
-									</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
+									}
+								/>
+							</Menu.Item>
 						</Sidebar>
 						<Sidebar.Pusher
 							dimmed={visible}
