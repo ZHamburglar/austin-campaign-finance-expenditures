@@ -228,10 +228,6 @@ class Navbar extends Component {
 	}
 }
 
-// const mapStateToProps = ({ dates }) => ({
-// 	filterDates: dates.filterDates
-// });
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
 	changeHomePage: () => push({
 		pathname: '/',

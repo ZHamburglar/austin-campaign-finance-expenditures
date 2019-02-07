@@ -300,7 +300,7 @@ class HomePresentation extends Component {
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
 							<Column>
-								<InfoContainer class="standard">
+								<InfoContainer className="standard">
 									{/* Change the iframe to take up 100% with text out of frame */}
 									<Iframe url="http://media.swagit.com/austintx/atxn1/"
 										width="100%"
