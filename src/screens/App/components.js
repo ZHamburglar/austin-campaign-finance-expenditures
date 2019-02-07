@@ -14,6 +14,7 @@ export const AppContainer = styled.div`
     width: 100%;
 
 	@media (max-width : 768px) {
+		min-height: 100%
 		width: 100%;
 		background-size: auto;
 	}

@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import {
+	Grid
+} from 'semantic-ui-react';
 
 // Local Components
 import Loading from '../../components/Loading';
@@ -109,9 +112,7 @@ class Council extends Component {
 		const { filteredData, name } = this.state;
 		if (this.state.loading) {
 			return (
-				<div
-					className="App"
-				>
+				<div>
 					<Loading />
 				</div>
 			);
@@ -120,28 +121,33 @@ class Council extends Component {
 		if (filteredData) {
 			return (
 				<>
-					<div className="row">
-						<div className="one-third column">
-							<GeneralInfo data={this.state.filteredData} name={name} />
-						</div>
-						<div className="one-third column">
-							<PieChart data={this.state.filteredData} />
-						</div>
-						<div className="one-third column fill">
-							<PieChart data={this.state.filteredData} />
-						</div>
-					</div>
-					<div className="row">
-						<div className="one-third column">
-							<TopList data={this.state.filteredData} entity="Individuals" />
-						</div>
-						<div className="one-third column">
-							<TopList data={this.state.filteredData} entity="Organizations" />
-						</div>
-						<div className="one-third column">
-							<HorizontalBar data={this.state.filteredData} />
-						</div>
-					</div>
+					<Grid style={{ height: '100%' }}>
+						<Grid.Row style={{ height: '50%' }}>
+							<Grid.Column mobile={16} tablet={8} computer={5}>
+								<GeneralInfo data={this.state.filteredData} name={name} />
+							</Grid.Column>
+
+							<Grid.Column mobile={16} tablet={8} computer={5}>
+								<PieChart data={this.state.filteredData} />
+							</Grid.Column>
+
+							<Grid.Column mobile={16} tablet={8} computer={6}>
+								<PieChart data={this.state.filteredData} />
+							</Grid.Column>
+						</Grid.Row>
+
+						<Grid.Row style={{ height: '50%' }}>
+							<Grid.Column mobile={16} tablet={8} computer={5}>
+								<TopList data={this.state.filteredData} entity="Individuals" />
+							</Grid.Column>
+							<Grid.Column mobile={16} tablet={8} computer={5}>
+								<TopList data={this.state.filteredData} entity="Organizations" />
+							</Grid.Column>
+							<Grid.Column mobile={16} tablet={8} computer={6}>
+								<HorizontalBar data={this.state.filteredData} />
+							</Grid.Column>
+						</Grid.Row>
+					</Grid>
 				</>
 			);
 		}

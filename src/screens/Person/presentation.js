@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Table } from 'semantic-ui-react';
+import {
+	Grid,
+} from 'semantic-ui-react';
 
 class PersonPresentation extends Component {
 	static propTypes = {
@@ -26,48 +29,50 @@ class PersonPresentation extends Component {
 
 		return (
 			<>
-				<div className="row">
-					<div className="half column fill">
-						<Segment.Group raised className="fill">
-							<Segment>
-								{person}
-							</Segment>
-							<Segment.Group horizontal>
+				<Grid style={{ height: '100%' }}>
+					<Grid.Row style={{ height: '50%' }}>
+						<Grid.Column mobile={16} tablet={8} computer={8}>
+							<Segment.Group raised className="fill">
 								<Segment>
-									{location[0].city}
+									{person}
 								</Segment>
-								<Segment>
-									{location[0].zipcode}
-								</Segment>
+								<Segment.Group horizontal>
+									<Segment>
+										{location[0].city}
+									</Segment>
+									<Segment>
+										{location[0].zipcode}
+									</Segment>
+								</Segment.Group>
+								<Table>
+									<Table.Body className="standard">
+										<Table.Row>
+											<Table.Cell>Number of Contributions</Table.Cell>
+											<Table.Cell>{contNum}</Table.Cell>
+										</Table.Row>
+										<Table.Row>
+											<Table.Cell>Total Contributions</Table.Cell>
+											<Table.Cell>${contTotal}</Table.Cell>
+										</Table.Row>
+									</Table.Body>
+								</Table>
 							</Segment.Group>
-							<Table>
-								<Table.Body className="standard">
-									<Table.Row>
-										<Table.Cell>Number of Contributions</Table.Cell>
-										<Table.Cell>{contNum}</Table.Cell>
-									</Table.Row>
-									<Table.Row>
-										<Table.Cell>Total Contributions</Table.Cell>
-										<Table.Cell>${contTotal}</Table.Cell>
-									</Table.Row>
-								</Table.Body>
-							</Table>
-						</Segment.Group>
-					</div>
-					<div className="half column fill">
-						<Segment.Group raised className="fill">
+						</Grid.Column>
+
+						<Grid.Column mobile={16} tablet={8} computer={8}>
 							{this.props.person}
-						</Segment.Group>
-					</div>
-				</div>
-				<div className="row">
-					<div className="half column">
-						{this.props.person}
-					</div>
-					<div className="half column">
-						{this.props.person}
-					</div>
-				</div>
+						</Grid.Column>
+					</Grid.Row>
+
+					<Grid.Row style={{ height: '50%' }}>
+						<Grid.Column mobile={16} tablet={8} computer={8}>
+							{this.props.person}
+						</Grid.Column>
+						<Grid.Column mobile={16} tablet={8} computer={8}>
+							{this.props.person}
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
 			</>
 		);
 	}

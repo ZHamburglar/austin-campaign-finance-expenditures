@@ -175,7 +175,79 @@ class HomePresentation extends Component {
 								</Statistic.Group>
 							</Column>
 						</Grid.Column>
+						<Grid.Column mobile={16} tablet={8} computer={6}>
+							<Column>
+								<div>
+									<Statistic.Group>
+										<Statistic>
+											<Statistic.Value>
+												<Number>
+													{months}
+												</Number>
+											</Statistic.Value>
+											<Statistic.Label>
+												<Metric>
+													{monthsString}
+												</Metric>
+											</Statistic.Label>
+										</Statistic>
+										<Statistic>
+											<Statistic.Value>
+												<Number>
+													{days}
+												</Number>
+											</Statistic.Value>
+											<Statistic.Label>
+												<Metric>
+													{daysString}
+												</Metric>
+											</Statistic.Label>
+										</Statistic>
+									</Statistic.Group>
+									<br />
+									until the next election.
+								</div>
+								<div>
+									<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
+								</div>
+								<VotingButton name='kevin' />
+							</Column>
+						</Grid.Column>
+					</Grid.Row>
 
+					<Grid.Row style={{ height: '50%' }}>
+						<Grid.Column mobile={16} tablet={8} computer={5}>
+							<Column>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												22
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Faves
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+								<Statistic.Group>
+									<Statistic>
+										<Statistic.Value>
+											<Number>
+												22
+											</Number>
+										</Statistic.Value>
+										<Statistic.Label>
+											<Metric>
+												Faves
+											</Metric>
+										</Statistic.Label>
+									</Statistic>
+								</Statistic.Group>
+							</Column>
+						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
 							<Column>
 								<Statistic.Group>
@@ -216,85 +288,7 @@ class HomePresentation extends Component {
 								</Statistic.Group>
 							</Column>
 						</Grid.Column>
-					</Grid.Row>
-
-					<Grid.Row style={{ height: '50%' }}>
-						<Grid.Column mobile={16} tablet={8} computer={5}>
-							<Column>
-								<Statistic.Group>
-									<Statistic>
-										<Statistic.Value>
-											<Number>
-												22
-											</Number>
-										</Statistic.Value>
-										<Statistic.Label>
-											<Metric>
-												Faves
-											</Metric>
-										</Statistic.Label>
-									</Statistic>
-								</Statistic.Group>
-								<Statistic.Group>
-									<Statistic>
-										<Statistic.Value>
-											<Number>
-												22
-											</Number>
-										</Statistic.Value>
-										<Statistic.Label>
-											<Metric>
-												Faves
-											</Metric>
-										</Statistic.Label>
-									</Statistic>
-								</Statistic.Group>
-								{/* <InfoContainer>
-									<Info>
-										<HomeTopContributors />
-									</Info>
-								</InfoContainer> */}
-							</Column>
-						</Grid.Column>
-						<Grid.Column mobile={16} tablet={8} computer={5}>
-							<Column>
-								<div>
-									<Statistic.Group>
-										<Statistic>
-											<Statistic.Value>
-												<Number>
-													{months}
-												</Number>
-											</Statistic.Value>
-											<Statistic.Label>
-												<Metric>
-													{monthsString}
-												</Metric>
-											</Statistic.Label>
-										</Statistic>
-										<Statistic>
-											<Statistic.Value>
-												<Number>
-													{days}
-												</Number>
-											</Statistic.Value>
-											<Statistic.Label>
-												<Metric>
-													{daysString}
-												</Metric>
-											</Statistic.Label>
-										</Statistic>
-									</Statistic.Group>
-									<br />
-									until the next election.
-								</div>
-								<div>
-									<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
-								</div>
-								<VotingButton name='kevin' />
-							</Column>
-						</Grid.Column>
-						<Grid.Column mobile={16} tablet={8} computer={5}>
+						<Grid.Column mobile={16} tablet={8} computer={6}>
 							<Column>
 								<InfoContainer className="standard">
 									{/* Change the iframe to take up 100% with text out of frame */}
