@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 export const AppContainer = styled.div`
     text-align: center;
-    background-color: #425766;
+    background-color: red;
     background-image : url('../../assets/images/coadowntown.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: repeat;
     font-family: "Roboto";
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 
 	@media (max-width : 768px) {
-		position: absolute;
-		height: 100%;
+		width: 100%;
+		background-color: purple;
 	}
 	
 `;
@@ -33,7 +33,8 @@ export const MainContainer = styled.div`
 	background-color: blue;
 
 	@media (max-width : 768px) {
-		position: relative;
+		margin-top: 0vh;
+		position: absolute;
 		height: 100%;
 	}
 `;
@@ -42,10 +43,7 @@ export const Main = styled.div`
     background-color: rgba(66,87,102, .95);
 	height: 95%;
     width: 95%;
-
-	@media (max-width: 1000px) {
-    	width: 98%;
-	}
+	position: relative;
 
 	@media (max-width:768px) {
     	width: 98%;

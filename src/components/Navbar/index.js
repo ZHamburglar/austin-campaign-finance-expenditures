@@ -82,7 +82,6 @@ class Navbar extends Component {
 							inverted
 							vertical
 							visible={visible}
-							style={{ overflow: 'hidden' }}
 						>
 							<Menu.Item as='a' onClick={this.props.changeHomePage}>
 								<Icon name='home' />
@@ -94,7 +93,7 @@ class Navbar extends Component {
 									position={'right center'}
 									trigger={<div>Council</div>}
 									content={
-										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute', zIndex: '999999 !important' }}>
+										<Menu vertical overlay style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll', position: 'absolute' }}>
 											{this.props.organizations.Council.map((member) => {
 												return <Menu.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Menu.Item>;
 											})}
@@ -146,7 +145,6 @@ class Navbar extends Component {
 							dimmed={visible}
 							onClick={this.handlePusher}
 							style={{ minHeight: "100vh" }}
-
 						>
 							<Menu fixed="top" inverted>
 								<Menu.Item onClick={this.handleToggle}>
@@ -159,12 +157,14 @@ class Navbar extends Component {
 									<Icon name="cog" />
 								</Menu.Item>
 							</Menu>
+							<div>ADD THE COMPONENTS HERE</div>
 						</Sidebar.Pusher>
+
 					</Sidebar.Pushable>
 				</Responsive>
 
 				<Responsive minWidth={Responsive.onlyTablet.minWidth}>
-					<Menu fixed="top" borderless inverted className="Navbar">
+					<Menu fixed="top" borderless inverted className="Navbar" style={{ height: '5%' }}>
 						<Menu.Item as='a' header>
 							Austin Political Tracker
 						</Menu.Item>

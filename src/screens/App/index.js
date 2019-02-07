@@ -113,29 +113,33 @@ class App extends Component {
 
 		if (this.state.data) {
 			return (
-				<AppContainer>
+				<div>
 					<Navbar
-						organizations={this.state.organizations}
-						newPACS={this.state.newPACS}
-						newCouncil={this.state.newCouncil}
-						office={this.state.office}
-						contributors={this.state.contributors}
-					/>
-					<MainContainer>
-						<Main>
-							<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />
-							<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
-							<Route exact path='/person/:user' component={withTracker((props) => <Person {...props} data={this.state.data} />)} />
-							<Route exact path='/settings' component={withTracker(Settings)} />
-						</Main>
-					</MainContainer>
-				</AppContainer>
+							organizations={this.state.organizations}
+							newPACS={this.state.newPACS}
+							newCouncil={this.state.newCouncil}
+							office={this.state.office}
+							contributors={this.state.contributors}
+						/>
+					<AppContainer>
+						
+						<MainContainer>
+							<Main>
+								<Route exact path='/' component={withTracker((props) => <Home {...props} data={this.state.data} organizations={this.state.organizations} />)} />
+								<Route exact path='/council/:org' component={withTracker((props) => <Council {...props} data={this.state.data} />)} />
+								<Route exact path='/person/:user' component={withTracker((props) => <Person {...props} data={this.state.data} />)} />
+								<Route exact path='/settings' component={withTracker(Settings)} />
+							</Main>
+						</MainContainer>
+					</AppContainer>
+				</div>
+
 			);
 		}
 
 		return (
 			<div>
-				This is Broken! Please Refresh!
+				This is Broken! Please Refresh
 			</div>
 		);
 	}
