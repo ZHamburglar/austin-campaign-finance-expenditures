@@ -1,10 +1,11 @@
 // Node Modules
 import styled from 'styled-components';
+import backgroundImage from '../../assets/images/coadowntown.jpg';
 
 export const AppContainer = styled.div`
     text-align: center;
-    background-color: red;
-    background-image : url('../../assets/images/coadowntown.jpg');
+    background-color: #425766;
+    background-image : url(${backgroundImage});
     background-position: center;
     background-size: cover;
     background-repeat: repeat;
@@ -14,9 +15,8 @@ export const AppContainer = styled.div`
 
 	@media (max-width : 768px) {
 		width: 100%;
-		background-color: purple;
+		background-size: auto;
 	}
-	
 `;
 
 export const MainContainer = styled.div`
@@ -30,10 +30,9 @@ export const MainContainer = styled.div`
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-	background-color: blue;
 
 	@media (max-width : 768px) {
-		margin-top: 0vh;
+		margin-top: 5%;
 		position: absolute;
 		height: 100%;
 	}

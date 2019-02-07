@@ -26,11 +26,9 @@ class NavbarDesktop extends Component {
 	};
 
 	state = {
-		loading: true,
 		searchinput: '',
 		selectedOrganization: '',
 		datesRange: '',
-		visible: false
 	}
 
 	handleSearchChange = (e) => {
@@ -67,7 +65,6 @@ class NavbarDesktop extends Component {
 	handleToggle = () => this.setState({ visible: !this.state.visible });
 
 	render() {
-		const { visible } = this.state;
 		return (
 			<>
 				<Menu fixed="top" borderless inverted className="Navbar" style={{ height: '5%' }}>

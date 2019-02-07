@@ -8,7 +8,6 @@ import queryString from 'query-string';
 import {
 	Icon,
 	Popup,
-	Dropdown,
 	Menu,
 } from 'semantic-ui-react';
 import { DatesRangeInput } from 'semantic-ui-calendar-react';

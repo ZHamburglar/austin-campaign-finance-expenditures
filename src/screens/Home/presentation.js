@@ -7,18 +7,14 @@ import Iframe from 'react-iframe';
 import {
 	Statistic,
 	Grid,
-	Segment 
 } from 'semantic-ui-react';
 
 // Local Components
 import VotingButton from '../../components/Buttons/VotingButton';
-import HomeTopContributors from '../../components/HomeTopContributors';
+// import HomeTopContributors from '../../components/HomeTopContributors';
 import {
-	Row,
 	Column,
 	InfoContainer,
-	Info,
-	MetricContainer,
 	Number,
 	Metric,
 	VoterButton

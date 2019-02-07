@@ -2,19 +2,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
-import { push } from 'connected-react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import queryString from 'query-string';
 import {
-	Icon,
 	Sidebar,
 	Responsive,
-	Dropdown,
 	Menu,
-	Popup
 } from 'semantic-ui-react';
-import { DatesRangeInput } from 'semantic-ui-calendar-react';
 
 // Local Components
 import withTracker from '../../withTracker';
@@ -26,9 +19,6 @@ import Loading from '../../components/Loading';
 import NavbarDesktop from '../../components/Navbar/Desktop';
 import NavbarMobile from '../../components/Navbar/Mobile';
 import NavbarPushable from '../../components/Navbar/Mobile/Pushable';
-import NavSearch from '../../components/Navbar/NavSearch';
-import MainComponent from '../Main';
-import { changeFilterDate } from '../../redux/reducers/dates';
 import {
 	AppContainer,
 	MainContainer,
@@ -208,7 +198,6 @@ class App extends Component {
 									</MainContainer>
 								</AppContainer>
 							</Sidebar.Pusher>
-
 						</Sidebar.Pushable>
 					</Responsive>
 
