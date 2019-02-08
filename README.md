@@ -19,6 +19,7 @@ http://semantic-ui-forest.com/themes/
 * Expenditures
 * Skeleton components while loading
 * Switch to plotly from chart.js? https://plot.ly/javascript/react/
+* React Table? https://react-table.js.org/#/story/readme
 
 ### CSS General
 * Mobile friendliness

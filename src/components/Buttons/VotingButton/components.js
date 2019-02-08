@@ -25,6 +25,9 @@ export const Register = styled.div`
 `; 
 
 export const Vote = styled.a`
+  	padding: 0 1em;
+	    font-weight: 900;
+
   	font-family: 'Shrikhand', cursive;
 	font-size: 2rem;
     background: #e74c3c;

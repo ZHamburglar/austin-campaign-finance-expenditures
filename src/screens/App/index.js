@@ -153,7 +153,12 @@ class App extends Component {
 		if (this.state.loading) {
 			return (
 				<div>
-					<Loading />
+					<Responsive {...Responsive.onlyMobile}>
+						<Loading />
+					</Responsive>
+					<Responsive minWidth={Responsive.onlyTablet.minWidth}>
+						<Loading />
+					</Responsive>
 				</div>
 			);
 		}
