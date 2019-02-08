@@ -27,15 +27,6 @@ export const Metric = styled.span`
 	text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
 `;
 
-export const VoterButton = styled.a`
-	font-size: 80%
-	background-color: white;
-	color: red;
-
-	&:hover {
-    background: blue;
-  	}
-`;
 
 
 

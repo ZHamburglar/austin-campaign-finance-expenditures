@@ -60,7 +60,7 @@ class UpdateModal extends Component {
 				<>
 					<Modal dimmer='blurring' open={open} onClose={this.props.changeModal}>
 						<Modal.Header>Update Notes</Modal.Header>
-						<Modal.Content>
+						<Modal.Content style={{ maxHeight: '40vh', overflowY: 'scroll' }}>
 							{this.state.notes.map((update, i) => {
 								return <div key={i}>
 									<Modal.Description>

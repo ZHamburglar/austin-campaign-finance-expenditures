@@ -16,8 +16,7 @@ import {
 	Column,
 	InfoContainer,
 	Number,
-	Metric,
-	VoterButton
+	Metric
 } from './components';
 
 class HomePresentation extends Component {
@@ -204,11 +203,15 @@ class HomePresentation extends Component {
 											</Statistic.Label>
 										</Statistic>
 									</Statistic.Group>
-									<br />
-									until the next election.
-								</div>
-								<div>
-									<VoterButton href="https://www.votetexas.gov/register-to-vote/">Registered to vote?</VoterButton>
+									<Statistic.Group>
+										<Statistic>
+											<Statistic.Label>
+												<Metric>
+													Until Next Election
+												</Metric>
+											</Statistic.Label>
+										</Statistic>
+									</Statistic.Group>
 								</div>
 								<VotingButton name='kevin' />
 							</Column>
