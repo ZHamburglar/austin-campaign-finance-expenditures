@@ -6,6 +6,9 @@ import {
 	Grid,
 } from 'semantic-ui-react';
 
+// Local Components
+import PersonTable from './table';
+
 class PersonPresentation extends Component {
 	static propTypes = {
 		data: PropTypes.array.isRequired,
@@ -20,6 +23,7 @@ class PersonPresentation extends Component {
 
 	render() {
 		const {
+			data,
 			person,
 			contNum,
 			contTotal,
@@ -66,7 +70,7 @@ class PersonPresentation extends Component {
 
 					<Grid.Row style={{ height: '50%' }}>
 						<Grid.Column mobile={16} tablet={8} computer={8}>
-							{this.props.person}
+							<PersonTable data={data} />
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={8}>
 							{this.props.person}
