@@ -18,11 +18,19 @@ import { changeFilterDate } from '../../../redux/reducers/dates';
 
 class NavbarDesktop extends Component {
 	static propTypes = {
-		organizations: PropTypes.array.isRequired,
-		office: PropTypes.array.isRequired,
-		contributors: PropTypes.array.isRequired,
-		newPACS: PropTypes.array.isRequired,
-		newCouncil: PropTypes.array.isRequired,
+		organizations: PropTypes.array,
+		office: PropTypes.array,
+		contributors: PropTypes.array,
+		newPACS: PropTypes.array,
+		newCouncil: PropTypes.array,
+	};
+
+	static defaultProps = {
+		organizations: null,
+		office: null,
+		contributors: null,
+		newPACS: null,
+		newCouncil: null
 	};
 
 	state = {
@@ -65,6 +73,13 @@ class NavbarDesktop extends Component {
 	handleToggle = () => this.setState({ visible: !this.state.visible });
 
 	render() {
+		const {
+			organizations,
+			office,
+			contributors,
+			newPACS,
+			newCouncil
+		} = this.props;
 		return (
 			<>
 				<Menu fixed="top" borderless inverted className="Navbar" style={{ height: '5%' }}>
@@ -75,49 +90,61 @@ class NavbarDesktop extends Component {
 						Home
 					</Menu.Item>
 					<Dropdown item simple text='Council/PACS'>
-						<Dropdown.Menu>
-							<Dropdown.Item>
-								<i className='dropdown icon' />
-								<span className='text'>Office Holders</span>
-								<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
-									{this.props.organizations.Council.map((member) => {
-										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-									})}
+						{
+							organizations && (
+								<Dropdown.Menu>
+									<Dropdown.Item>
+										<i className='dropdown icon' />
+										<span className='text'>Office Holders</span>
+										<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
+											{organizations.Council.map((member) => {
+												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+											})}
+										</Dropdown.Menu>
+									</Dropdown.Item>
+									<Dropdown.Item>
+										<i className='dropdown icon' />
+										<span className='text'>PACS</span>
+										<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
+											{organizations.Organizations.map((member) => {
+												return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
+											})}
+										</Dropdown.Menu>
+									</Dropdown.Item>
 								</Dropdown.Menu>
-							</Dropdown.Item>
-							<Dropdown.Item>
-								<i className='dropdown icon' />
-								<span className='text'>PACS</span>
-								<Dropdown.Menu style={{ minHeight: '200px', maxHeight: '600px', overflowX: 'scroll' }}>
-									{this.props.organizations.Organizations.map((member) => {
-										return <Dropdown.Item onClick={this.handleOrgChange} key={member.filer_name} value={member.filer_name}>{member.filer_name}</Dropdown.Item>;
-									})}
-								</Dropdown.Menu>
-							</Dropdown.Item>
-						</Dropdown.Menu>
+							)
+						}
+
 					</Dropdown>
 					<Menu.Item>
-						<NavSearch
-							office={this.props.office}
-							contributors={this.props.contributors}
-							pacs={this.props.newPACS}
-							council={this.props.newCouncil}
-						/>
+						{
+							office && contributors && newPACS && newCouncil && (
+								<NavSearch
+									office={this.props.office}
+									contributors={this.props.contributors}
+									pacs={this.props.newPACS}
+									council={this.props.newCouncil}
+								/>
+							)
+						}
 					</Menu.Item>
 					<Dropdown item simple icon='filter'>
-						<Dropdown.Menu>
-							<Dropdown.Item>
-								<DatesRangeInput
-									name="datesRange"
-									placeholder="From - To"
-									dateFormat="MM-DD-YYYY"
-									minDate="01-10-2016"
-									value={this.state.datesRange}
-									iconPosition="left"
-									onChange={this.handleChange} />
-							</Dropdown.Item>
-						</Dropdown.Menu>
-
+						{
+							office && (
+								<Dropdown.Menu>
+									<Dropdown.Item>
+										<DatesRangeInput
+											name="datesRange"
+											placeholder="From - To"
+											dateFormat="MM-DD-YYYY"
+											minDate="01-10-2016"
+											value={this.state.datesRange}
+											iconPosition="left"
+											onChange={this.handleChange} />
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							)
+						}
 					</Dropdown>
 					<Menu.Item as='a' position="right" onClick={this.props.changeSettingPage}>
 						<Icon name="cog" />

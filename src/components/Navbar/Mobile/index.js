@@ -14,16 +14,25 @@ import { changeFilterDate } from '../../../redux/reducers/dates';
 
 class NavbarMobile extends Component {
 	static propTypes = {
-		handleToggle: PropTypes.func.isRequired,
+		handleToggle: PropTypes.func,
+	};
+
+	static defaultProps = {
+		handleToggle: null
 	};
 
 	render() {
+		const {
+			handleToggle
+		} = this.props;
 		return (
 			<>
 				<Menu fixed="top" inverted>
-					<Menu.Item onClick={this.props.handleToggle}>
-						<Icon name="sidebar" />
-					</Menu.Item>
+					{ handleToggle &&
+						(<Menu.Item onClick={handleToggle}>
+							<Icon name="sidebar" />
+						</Menu.Item>)
+					}
 					<Menu.Item as='a' header>
 								Austin Political Tracker
 					</Menu.Item>

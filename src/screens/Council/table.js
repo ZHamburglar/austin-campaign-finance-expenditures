@@ -6,7 +6,7 @@ import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-class PersonTable extends Component {
+class CouncilTable extends Component {
 	static propTypes = {
 		data: PropTypes.array.isRequired
 	};
@@ -51,4 +51,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 	})
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(PersonTable);
+export default connect(null, mapDispatchToProps)(CouncilTable);

@@ -8,6 +8,7 @@ import {
 } from 'semantic-ui-react';
 
 // Local Components
+import CouncilPresentation from './presentation';
 import Loading from '../../components/Loading';
 import GeneralInfo from '../../components/GeneralInfo';
 import PieChart from '../../components/Charts/Pie';
@@ -61,7 +62,6 @@ class Council extends Component {
 	}
 
 	filterByDate(data) {
-		console.log('huh?')
 		const { filterDates } = this.props;
 		let dateFiltered = [];
 		data.Contributions.filter((transaction) => {
@@ -121,33 +121,10 @@ class Council extends Component {
 		if (filteredData) {
 			return (
 				<>
-					<Grid style={{ height: '100%' }}>
-						<Grid.Row style={{ height: '50%' }}>
-							<Grid.Column mobile={16} tablet={8} computer={5}>
-								<GeneralInfo data={this.state.filteredData} name={name} />
-							</Grid.Column>
-
-							<Grid.Column mobile={16} tablet={8} computer={5}>
-								<PieChart data={this.state.filteredData} />
-							</Grid.Column>
-
-							<Grid.Column mobile={16} tablet={8} computer={6}>
-								<PieChart data={this.state.filteredData} />
-							</Grid.Column>
-						</Grid.Row>
-
-						<Grid.Row style={{ height: '50%' }}>
-							<Grid.Column mobile={16} tablet={8} computer={5}>
-								<TopList data={this.state.filteredData} entity="Individuals" />
-							</Grid.Column>
-							<Grid.Column mobile={16} tablet={8} computer={5}>
-								<TopList data={this.state.filteredData} entity="Organizations" />
-							</Grid.Column>
-							<Grid.Column mobile={16} tablet={8} computer={6}>
-								<HorizontalBar data={this.state.filteredData} />
-							</Grid.Column>
-						</Grid.Row>
-					</Grid>
+					<CouncilPresentation
+						data={filteredData}
+						name={name}
+					/>
 				</>
 			);
 		}

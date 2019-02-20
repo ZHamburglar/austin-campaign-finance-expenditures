@@ -1,6 +1,7 @@
 ### 0.0.4
 
 * Long overdue rework for mobile experience.
+* Change App load to skeleton component.
 
 ### 0.0.3
 

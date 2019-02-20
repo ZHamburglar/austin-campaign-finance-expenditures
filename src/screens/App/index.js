@@ -7,6 +7,7 @@ import {
 	Sidebar,
 	Responsive,
 	Menu,
+	Grid
 } from 'semantic-ui-react';
 
 // Local Components
@@ -42,7 +43,6 @@ class App extends Component {
 
 	componentDidMount() {
 		this.getData();
-		console.log('this props', this.props)
 	}
 
 	getData() {
@@ -101,7 +101,7 @@ class App extends Component {
 					return { title: row.filer_name, org: "council" };
 				});
 				this.setState({
-					loading: false,
+					// loading: false,
 					data: response.data,
 					organizations,
 					contributors: newConts,
@@ -154,10 +154,37 @@ class App extends Component {
 			return (
 				<div>
 					<Responsive {...Responsive.onlyMobile}>
-						<Loading />
+						<NavbarMobile />
+						<AppContainer>
+							<MainContainer>
+								<Main>
+									<Grid style={{ height: '100%' }}>
+										<Grid.Row style={{ height: '50%' }}>
+											<Grid.Column mobile={16} tablet={16} computer={16}>
+												<Loading />
+											</Grid.Column>
+										</Grid.Row>
+									</Grid>
+								</Main>
+							</MainContainer>
+						</AppContainer>
 					</Responsive>
+
 					<Responsive minWidth={Responsive.onlyTablet.minWidth}>
-						<Loading />
+						<NavbarDesktop />
+						<AppContainer>
+							<MainContainer>
+								<Main>
+									<Grid style={{ height: '100%' }}>
+										<Grid.Row style={{ height: '50%' }}>
+											<Grid.Column mobile={16} tablet={16} computer={16}>
+												<Loading />
+											</Grid.Column>
+										</Grid.Row>
+									</Grid>
+								</Main>
+							</MainContainer>
+						</AppContainer>
 					</Responsive>
 				</div>
 			);

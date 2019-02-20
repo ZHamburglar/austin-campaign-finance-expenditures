@@ -7,7 +7,6 @@ class Loading extends Component {
 		return (
 			<div className="App-header">
 				<div>
-					Loading
 					<ReactLoading type={'cubes'} color={'blue'} height={100} width={200} />
 				</div>
 			</div>
