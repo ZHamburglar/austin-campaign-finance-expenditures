@@ -101,7 +101,7 @@ class App extends Component {
 					return { title: row.filer_name, org: "council" };
 				});
 				this.setState({
-					// loading: false,
+					loading: false,
 					data: response.data,
 					organizations,
 					contributors: newConts,
