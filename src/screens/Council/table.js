@@ -6,6 +6,9 @@ import { push } from 'connected-react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+// Local Components
+import Pagination from '../../components/Table/Pagination';
+
 class CouncilTable extends Component {
 	static propTypes = {
 		data: PropTypes.array.isRequired
@@ -13,17 +16,14 @@ class CouncilTable extends Component {
 
 	render() {
 		const columns = [{
-			Header: (props) => <span>Recipient</span>,
-			accessor: 'filer_name', // String-based value accessors!
+			Header: (props) => <span>Contributor</span>,
+			accessor: 'transactor_name', // String-based value accessors!
 			Cell: (props) => <span onClick={() => this.props.changeOrgPage(props.value)} value={props.value}>{props.value}</span>
 		}, {
 			Header: 'Amount',
 			accessor: 'transaction_amount',
-			Cell: (props) => <span className='number'>${props.value}</span> // Custom cell components!
-		}, {
-			id: 'friendName', // Required because our accessor is not a string
-			Header: () => <span>Report Listed</span>,
-			accessor: 'report_type' // Custom value accessors!
+			sort: 'desc',
+			Cell: (props) => <span className='number'>{parseInt(props.value, 10)}</span> // Custom cell components!
 		}, {
 			Header: (props) => <span>Date</span>, // Custom header components!
 			accessor: 'transaction_date',
@@ -34,6 +34,7 @@ class CouncilTable extends Component {
 			data={this.props.data}
 			columns={columns}
 			defaultPageSize={5}
+			PaginationComponent={Pagination}
 			showPaginationBottom={true}
 			showPagination={true}
 			pageSizeOptions={[5]}

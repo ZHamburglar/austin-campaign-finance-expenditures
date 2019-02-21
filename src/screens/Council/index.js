@@ -20,7 +20,9 @@ class Council extends Component {
 		loading: true,
 		filteredData: null,
 		zipCodes: null,
-		name: null
+		name: null,
+		contributors: null,
+		organizations: null
 	}
 
 	static propTypes = {
@@ -55,9 +57,8 @@ class Council extends Component {
 		} else {
 			this.setState({
 				name: this.props.match.params.org,
-				loading: false,
 				filteredData: filteredData.Contributions
-			});
+			}, this.createTableOrganizations(filteredData.Contributions));
 		}
 	}
 
@@ -71,9 +72,33 @@ class Council extends Component {
 			return null;
 		});
 		this.setState({
-			loading: false,
 			filteredData: dateFiltered
+		}, this.createTableOrganizations(dateFiltered));
+	}
+
+	createTableOrganizations(data) {
+		const contributors = [];
+		const organizations = [];
+		data.filter((transaction) => {
+			if (transaction.entity === 'Individual') {
+				contributors.push(transaction);
+				return true;
+			} else if (transaction.entity === 'Entity') {
+				organizations.push(transaction);
+				return true;
+			} else {
+				return false;
+			}
 		});
+		this.setState({
+			loading: false,
+			contributors,
+			organizations
+		});
+
+		console.log(contributors, organizations);
+
+		console.log('boooooo');
 	}
 
 	createZipCodeList(selectedOrganization) {
@@ -109,7 +134,12 @@ class Council extends Component {
 	}
 
 	render() {
-		const { filteredData, name } = this.state;
+		const {
+			filteredData,
+			name,
+			contributors,
+			organizations
+		} = this.state;
 		if (this.state.loading) {
 			return (
 				<div>
@@ -124,6 +154,8 @@ class Council extends Component {
 					<CouncilPresentation
 						data={filteredData}
 						name={name}
+						contributors={contributors}
+						organizations={organizations}
 					/>
 				</>
 			);

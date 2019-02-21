@@ -16,7 +16,9 @@ import TopList from '../../components/TopList';
 class PersonPresentation extends Component {
 	static propTypes = {
 		data: PropTypes.array.isRequired,
-		name: PropTypes.string.isRequired
+		name: PropTypes.string.isRequired,
+		contributors: PropTypes.array.isRequired,
+		organizations: PropTypes.array.isRequired,
 	};
 
 	componentDidMount() {
@@ -25,7 +27,9 @@ class PersonPresentation extends Component {
 	render() {
 		const {
 			data,
-			name
+			name,
+			contributors,
+			organizations
 		} = this.props;
 
 
@@ -48,11 +52,12 @@ class PersonPresentation extends Component {
 
 					<Grid.Row style={{ height: '50%' }}>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
-							<CouncilTable data={data} />
+							<CouncilTable data={contributors} />
 							{/* <TopList data={data} entity="Individuals" /> */}
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
-							<TopList data={data} entity="Organizations" />
+							<CouncilTable data={organizations} />
+							{/* <TopList data={data} entity="Organizations" /> */}
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={6}>
 							<HorizontalBar data={data} />
