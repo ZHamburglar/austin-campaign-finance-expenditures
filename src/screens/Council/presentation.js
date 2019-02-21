@@ -48,7 +48,8 @@ class PersonPresentation extends Component {
 
 					<Grid.Row style={{ height: '50%' }}>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
-							<TopList data={data} entity="Individuals" />
+							<CouncilTable data={data} />
+							{/* <TopList data={data} entity="Individuals" /> */}
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={8} computer={5}>
 							<TopList data={data} entity="Organizations" />
